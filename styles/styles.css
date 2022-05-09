@@ -1,0 +1,110 @@
+html , body{
+  width: 500px;
+  height: 250px;
+}
+
+#header {
+  display: inline-flex;
+  /* border: 1px solid red; */
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+
+}
+#span-header{
+  /*border: 1px solid green; */
+  font-family: "Garamond", Times, serif;
+  font-size: 24px;
+}
+
+#bloqueInicioSesion{
+
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
+
+.botonBloque{
+  width: 70%;
+  height: 15%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.boton{
+  width: 50%;
+  height: 100%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 5%;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5%;
+}
+
+.datosInicioBloque{
+  border : 1px solid black;
+  height: 50%;
+  width: 80%;
+  margin-left: 10%;
+}
+
+#correo{
+  width: 50%;
+  height: 25px;
+  margin-right: 5%;
+  margin-top: 10%;
+}
+
+#contrasenia{
+  height: 25px;
+  margin-top: 10%;
+  width: 40%;
+}
+
+#enviarDatosInicioSesion{
+  height: 25px;
+  width: 30%;
+  margin-left: 35%;
+  margin-top: 7%;
+}
+
+#usuarioIniciado{
+  border: 1px solid green;
+  height: 40%;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-top: 3%;
+}
+
+#footer{
+  display: inline-flex;
+  width: 100%;
+  height: 50px;
+}
+
+#btnSalir{
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  height: 30px;
+  margin-left: 40%;
+  margin-top: 5px;
+}
+#footerP{
+  position: absolute;
+  bottom: -9px;
+  left: 5px;
+  margin-top: 5px;
+}
+
+#labelNombreUsuario{
+  font-size: 18px;
+}
+
+#nombreUsuario{
+  font-size: 16px;
+}
