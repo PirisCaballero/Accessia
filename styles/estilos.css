@@ -1,31 +1,56 @@
 .header{
     display: inline-block;
     width: 100%;
-    height: 15%;
-    background-color: aqua;
+    height: 8%;
+    /*background-color: #0f6fc5; color de la universidad de deusto*/
+    background-color: white;
+    border-radius: 10px;
 }
 
 .tituloPagina{
     position: relative;
     float: right;
     margin-right: 2%;
-    margin-top: 3%;
+    margin-top: 1%;
+    color: black;
+    font-family: "Lucida Handwriting", cursive;
+    font-weight: normal;
+}
+
+.tituloUniversidad{
+    position: relative;
+    float: left;
+    margin-right: 2%;
+    margin-top: 1%;
+    color: black;
+    font-family:Garamond;
+    font-weight: normal;
 }
 
 .navBarUsuario{
     display: inline-block;
-    width: 100%;
+    width: 95%;
     height: 5%;
-    background-color: pink;
     margin-top: 1%;;
+    background-color: #0f6fc5;
+    border-radius: 10px;
+    margin-left: 2.5%;
 }
-.labelUsuario{
+
+.btnHeader{
     position: relative;
-    float: right;
-    margin-right: 2%;
-    margin-top: 0.7%;
+    height: 75%;
+    border-radius: 10px;
+    margin-top: 0.4%;
+    padding-right: 4%;
+    padding-left: 4%;
+}
+.btnHeader:hover{
+    background-color: white;
 }
 .logoDeusto{
-    width: 30%;
+    position: relative;
+    float: left;
+    width: 5%;
     height: 100%;
 }

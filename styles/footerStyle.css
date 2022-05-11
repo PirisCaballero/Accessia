@@ -1,0 +1,27 @@
+.footer{
+    display: inline-block;
+    position: absolute;
+    bottom: 0.5%;
+    left: 2.5%;
+    width: 95%;
+    height: 3%;
+    border-radius: 10px;
+    background-color: #0f6fc5;
+    vertical-align: middle;
+}
+.autor{
+    position: relative;
+    float: left;
+    margin-left: 1%;
+    margin-top: 0.2%;
+    font-family:Garamond;
+    color: white;
+}
+.correoFooter{
+    position: relative;
+    float: right;
+    margin-right: 1%;
+    margin-top: 0.2%;
+    font-family:Garamond;
+    color: white;
+}
