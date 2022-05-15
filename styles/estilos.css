@@ -23,8 +23,8 @@
     margin-right: 2%;
     margin-top: 1%;
     color: black;
-    font-family:Garamond;
-    font-weight: normal;
+    font-family: Garamond, serif;
+    font-weight: lighter;
 }
 
 .navBarUsuario{
@@ -48,7 +48,13 @@
 .btnHeader:hover{
     background-color: white;
 }
+.btnHeaderLink{
+    text-decoration: none;
+    color: black;
+    cursor: default;
+}
 .logoDeusto{
+    content:url("../img/logo-deusto.jpeg");
     position: relative;
     float: left;
     width: 5%;

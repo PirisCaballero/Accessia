@@ -8,8 +8,28 @@
         inicioSesion($_GET['usuario'] , $_GET['password']);
       }else if($_GET['action'] == 'guardarHistorico'){
         guardarHistorico($_GET['usuario'] , $_GET['data']);
+      }else if($_GET['action'] == 'registrarUsuario'){
+        registroUsuario($_GET['nombre'],$_GET['apellidos'],$_GET['correo']
+          ,$_GET['nickname'],$_GET['contrasena']);
       }
     }
+
+  function registroUsuario($nombre , $apellidos , $correo , $nickname , $contrasena){
+    $conn = getConnection();
+    if($conn){
+      $query = "INSERT INTO usuarios (nombreUsuario , apellidosUsuario , correoUsuario ,
+        contrasenia , apodo) VALUES ('$nombre' , '$apellidos' , '$correo' , '$nickname' , '$contrasena')";
+      $result = $conn -> query($query);
+      if($result == 1){
+        echo 'yes';
+      }else{
+        echo 'no';
+      }
+    }else{
+      closeConnection($conn);
+      echo 'false';
+    }
+  }
 
   function getConnection(){
     $host = 'accessiatfg.c8chkveususc.us-east-1.rds.amazonaws.com';

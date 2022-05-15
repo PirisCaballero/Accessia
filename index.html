@@ -4,31 +4,26 @@
 		<title>ACCESSIA TFG</title>
 		<link rel="stylesheet" type="text/css" href="styles/estilos.css">
 		<link rel="stylesheet" type="text/css" href="styles/footerStyle.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="/js/loadFunctions.js"></script>
 	</head>
 	<body>
-		<div class="header">
-			<img src="img/logo-deusto.jpeg" class="logoDeusto"/>
-			<h1 class="tituloUniversidad">Universidad de Deusto</h1>
-			<h1 class="tituloPagina">ACCESSIA</h1>
+		<div id="cabecera">
+			<script type="text/javascript">
+				loader = new Loader();
+				loader.loadHeader();
+			</script>
 		</div>
-
-		<div class="navBarUsuario">
-			<button class="btnHeader">Trabajo de fin de grado</button>
-			<button class="btnHeader">¿Qué es Accessia?</button>
-			<button class="btnHeader">¿Cómo funciona Accessia?</button>
-			<button class="btnHeader">Mis datos de Accessia</button>
-			<button class="btnHeader">Iniciar sesión</button>
-			<button class="btnHeader">
-				<a href="/pages/registroUsuario.html">Registrar usuario</a>
-			</button>
-		</div>
+		
 		
 		
 	</body>
 	<footer>
-		<div class="footer">
-			<label class="autor">Author: Aitor Piris</label>
-			<label class="correoFooter">email: aitorpiris@opendeusto.es</label>
+		<div id="footer">
+			<script type="text/javascript">
+				loader = new Loader();
+				loader.loadFooter();
+			</script>
 		</div>
 	</footer>
 </html>
