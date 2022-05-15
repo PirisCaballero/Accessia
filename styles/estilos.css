@@ -10,11 +10,11 @@
 .tituloPagina{
     position: relative;
     float: right;
-    margin-right: 2%;
-    margin-top: 1%;
-    color: black;
-    font-family: "Lucida Handwriting", cursive;
-    font-weight: normal;
+    margin-right: 1%;
+    content:url("../img/accessia-logo.png");
+    margin-top: 0.5%;
+    width: 12%;
+    height: 100%;
 }
 
 .tituloUniversidad{
@@ -23,7 +23,7 @@
     margin-right: 2%;
     margin-top: 1%;
     color: black;
-    font-family: Garamond, serif;
+    font-family: 'Cormorant Garamond';
     font-weight: lighter;
 }
 

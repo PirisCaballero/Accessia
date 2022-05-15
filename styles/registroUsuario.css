@@ -15,7 +15,7 @@
 .celdaNoInput{
     height: 10%;
     font-size: 24;
-    font-family: Garamond, serif;
+    font-family: 'Cormorant Garamond';
     font-weight:lighter;
 }
 
@@ -34,8 +34,8 @@
 
 .titulo{
     padding-top: 50%;
-    font-size: 32;
-    font-family: Garamond, serif;
+    font-size: 36;
+    font-family: 'Cormorant Garamond';
     font-weight:lighter;
 }
 
@@ -56,7 +56,7 @@
     width: 20%;
     height: 80%;
     font-size: 18;
-    font-family: Garamond, serif;
+    font-family: 'Cormorant Garamond';
     font-weight:lighter;
     border-radius: 5%;
     border: 1px solid grey;
