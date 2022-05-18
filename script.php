@@ -11,7 +11,49 @@
       }else if($_GET['action'] == 'registrarUsuario'){
         registroUsuario($_GET['nombre'],$_GET['apellidos'],$_GET['correo']
           ,$_GET['nickname'],$_GET['contrasena']);
+      }else if($_GET['action'] == 'saveCookies'){
+        saveCookies($_GET['data']);
+      }else if($_GET['action'] == 'comprobarUsuario'){
+        comprobarUsuario();
+      }else if($_GET['action'] == 'iniciarUsuario'){
+        iniciarUsuario($_GET['correo'] , $_GET['contrasena']);
+      }else if($_GET['action'] == 'deleteCookie'){
+        deleteCookie();
       }
+    }
+
+    function iniciarUsuario($correo , $contrasena){
+      $conn = getConnection();
+      if($conn){                
+        $query = "SELECT * FROM usuarios WHERE correoUsuario = '$correo' AND contrasenia = '$contrasena'";
+        $result = $conn -> query($query);
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            $user = 'userYes'.';'.$row['idnt_Usuario'].';'.$row['nombreUsuario'].';'.$row['apellidosUsuario'].';'.$row['correoUsuario'].';'.$row['contrasenia'].';'.$row['apodo'].';'.$row['fechaInicioSistema'];
+            echo $user;
+  
+          }
+          closeConnection($conn);
+      }else{
+        echo 'false';
+      }
+
+    }
+    function saveCookies($data){
+      $usuario = utf8_decode($data);
+      echo $usuario;
+      $name = 'usuario';
+      $value = $usuario;
+      $path = '/';
+      $domain = 'localhost';
+      setcookie($name , $value , time() + (86400 * 30) , $path , $domain );
+    }
+    function deleteCookie(){
+      setcookie('usuario' , null , -1 , '/');
+    }
+
+    function comprobarUsuario(){
+      echo $_COOKIE['usuario'];
     }
 
   function registroUsuario($nombre , $apellidos , $correo , $nickname , $contrasena){
@@ -25,6 +67,7 @@
       }else{
         echo 'no';
       }
+      closeConnection($conn);
     }else{
       closeConnection($conn);
       echo 'false';

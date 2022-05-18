@@ -1,12 +1,36 @@
+    <script src="/js/registro.js"></script>
+    <meta charset="UTF-8" />
     <div class="header">
         <img class="logoDeusto"/>
         <h1 class="tituloUniversidad">Universidad de Deusto</h1>
-        <img class="tituloPagina"/>
+        <a href="http://accessia.click" target="_parent ">
+            <img class="tituloPagina">
+        </a>
     </div>
 
-    <div class="navBarUsuario">
-        <button class="btnHeader">Trabajo de fin de grado</button>
-        <button class="btnHeader">¿Qué es Accessia?</button>
-        <button class="btnHeader">Usuario</button>
-        
+    <div class="cabecera">
+        <div class="navBarUsuario">
+            <button class="btnHeader">Trabajo de fin de grado</button>
+            <button class="btnHeader">¿Qué es Accessia?</button>
+            <button class="btnHeader">Usuario</button>
+            
+        </div>
+        <div class="usuario">
+            <div class="divUsuario" id="usuarioLabel">
+                <label class="labelUsuario">
+                    Usuario
+                </label>
+            </div>
+            <div class="inicio" id="inicioUsuario">
+                <a class="aUsuario" href="/pages/iniciarSesion.html">Iniciar sesion</a>
+                <label>/</label>
+                <a class="aUsuario" href="/pages/registroUsuario.html" target="_parent">Registrar Usuario</a>
+            </div>
+              
+            <img class="iconoUsuario" id="iconoUsuario"/>
+            <img class="iconoCerrarSesion" id="iconoCerrarSesion" onclick="cerrarSesion()"/>
+            <script>
+                comprobarUsuario();
+            </script>
+        </div>
     </div>
