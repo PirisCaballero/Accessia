@@ -45,7 +45,7 @@
       $name = 'usuario';
       $value = $usuario;
       $path = '/';
-      $domain = 'localhost';
+      $domain = 'accessia';
       setcookie($name , $value , time() + (86400 * 30) , $path , $domain );
     }
     function deleteCookie(){
