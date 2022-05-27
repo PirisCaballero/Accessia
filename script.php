@@ -41,12 +41,13 @@
     }
     function saveCookies($data){
       $usuario = utf8_decode($data);
-      echo $usuario;
       $name = 'usuario';
       $value = $usuario;
       $path = '/';
-      $domain = 'accessia';
+      $domain = 'localhost';
       setcookie($name , $value , time() + (86400 * 30) , $path , $domain );
+
+      echo $_COOKIE[$name];
     }
     function deleteCookie(){
       setcookie('usuario' , null , -1 , '/');

@@ -1,0 +1,61 @@
+.pantallaUsuario{
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 10%;
+}
+
+.historial{
+    position: relative;
+    width: 100%;
+}
+
+.graficos{
+    position: relative;
+    width: 100%;
+}
+.configuracion{
+    position: relative;
+    width: 100%;
+}
+
+
+
+.titulo{
+    width: 100%;
+    position: relative;
+    font-family: 'Cormorant Garamond';
+    font-size: 23;
+}
+.tituloU{
+    width: 100%;
+    position: relative;
+    margin-top: 0px;
+}
+.divTabla{
+    width: 100%;
+    height: 50%;
+    overflow-y: scroll;
+}
+.tabla{
+    width: 80%;
+    margin-left: 10%;
+    border-collapse: collapse;
+    margin-top: 4%;
+    margin-bottom: 5%;
+    border: 1px solid black;
+}
+.cabeceraTabla{
+    font-family: 'Cormorant Garamond , bold';
+    font-size: 21;
+    font-weight: bold;
+    padding-bottom: 1%;
+}
+.celda{
+    text-align: center;
+    height: 30px;
+}
+tr:nth-child(even) {
+    background-color: #b4b3b3;
+    padding: 8px;
+}
