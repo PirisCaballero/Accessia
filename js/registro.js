@@ -139,3 +139,7 @@ function cerrarSesion(){
         }
     })
 }
+
+function pantallaUsuario(){
+    alert('Pantalla de usuario');
+}

@@ -11,7 +11,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Cormorant Garamond' rel='stylesheet'>
         <script src="../js/chart/dist/chart.min.js"></script>
 	</head>
-	<body>
+	<body onload="onloadPage()">
 		<div id="cabecera">
 			<script type="text/javascript">
 				loader = new Loader();
@@ -73,6 +73,26 @@
                         <span class="titulo">Configuración de usuario</span>
                         <br>
                         <span class="tituloU">_______________</span>
+
+                    </div>
+                    <div class="sliderDiv">
+                        <div class="filtro">
+                            <!-- Rounded switch -->
+                            <label>
+                                Filtro Pornografia
+                            </label>
+                            <label class="switch">
+                                <input type="checkbox" onClick="slider()" id="slider" value="off">
+                                <span class="slider round"></span>
+                            </label>
+
+                        </div>
+                        <div class="filtro">
+
+                        </div>
+                        <div class="filtro">
+
+                        </div>
                     </div>
                 </div>
                 

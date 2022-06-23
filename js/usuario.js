@@ -17,6 +17,36 @@ function añadirFilasHistorial(){
 
 }
 
+function onloadPage(){
+    
+    $.ajax({
+        url: "../script.php?action=comprobarUsuario",
+        success: function(result){
+            processResponseOnLoad(result.responseText);
+        },
+        error: function(result){
+            processResponseOnLoad(result.responseText);
+        }
+    });
+    
+}
+
+function processResponseOnLoad(response){
+    let res = response.includes("Undefined index:");
+    if(res){
+        window.open('../' , '_parent');
+    }
+}
+
+function slider(){
+    if(document.getElementById("slider").value == "off"){
+        document.getElementById("slider").value = "on";
+    }else{
+        document.getElementById("slider").value = "off"
+    }
+    console.log("slider status: "+document.getElementById("slider").value);
+}
+
 function creacionFilas (){
     var lista = [];
     for( i = 0; i<10 ; i++){
