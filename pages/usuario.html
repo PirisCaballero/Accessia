@@ -68,7 +68,7 @@
                     </div>
                 </div>
 
-                <div class="configuracion">
+                <!-- <div class="configuracion">
                     <div style="text-align: center; margin-top: 5%;">
                         <span class="titulo">Configuración de usuario</span>
                         <br>
@@ -77,7 +77,6 @@
                     </div>
                     <div class="sliderDiv">
                         <div class="filtro">
-                            <!-- Rounded switch -->
                             <label>
                                 Filtro Pornografia
                             </label>
@@ -94,6 +93,27 @@
 
                         </div>
                     </div>
+                </div> -->
+
+                <div class="aplicacionesEscritorio">
+                    <div style="text-align: center; margin-top: 5%;">
+                        <span class="titulo">Capturas de aplicaciones de escritorio</span>
+                        <br>
+                        <span class="tituloU">_______________</span>
+
+                    </div>
+                    <div class="divTablaEscritorio">
+                       
+                        <table class="tabla" id="tablaDesktopApps">
+                        </table>
+                    </div>
+                    <div class="divBotones">
+                        <button onclick="addCount(1)" class="btnAvanzar">Siguiente</button>
+                        <button onclick="addCount(-1)" class="btnAvanzar">Anterior</button>
+                    </div>
+                    <script type="text/javascript">
+                        addDesktopHistorical();
+                    </script>
                 </div>
                 
 

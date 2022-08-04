@@ -37,6 +37,36 @@
     height: 50%;
     overflow-y: scroll;
 }
+.divTablaEscritorio{
+  width: 100%;
+  height: 50%;
+}
+
+.divTablaDetalle{
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+.btnAvanzar{
+  position: relative;
+  float: right;
+  width: 8%;
+  height: 100%;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+.btnTablaEscritorio{
+  border-radius: 5px;
+  background-color: white;
+}
+.divBotones{
+  position: relative;
+  margin-left: 10%;
+  width: 80%;
+  height: 5%;
+  margin-right: 10%;
+  margin-bottom: 20px;
+}
 .tabla{
     width: 80%;
     margin-left: 10%;
@@ -50,6 +80,7 @@
     font-size: 21;
     font-weight: bold;
     padding-bottom: 1%;
+    text-align: center;
 }
 .celda{
     text-align: center;
@@ -133,4 +164,15 @@ tr:nth-child(even) {
       display: flex;
       height: 32%;
       border: 1px solid green;
+  }
+
+  .aplicacionesEscritorio{
+    margin-top: 20px;
+    position: relative;
+    width: 100%;
+  }
+  .aplicacionesEscritorioDetalle{
+    margin-top: 20px;
+    position: relative;
+    width: 100%;
   }

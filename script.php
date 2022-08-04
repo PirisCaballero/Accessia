@@ -12,13 +12,66 @@
         registroUsuario($_GET['nombre'],$_GET['apellidos'],$_GET['correo']
           ,$_GET['nickname'],$_GET['contrasena']);
       }else if($_GET['action'] == 'saveCookies'){
-        saveCookies($_GET['data']);
+        saveCookies($_GET['data'] , $_GET['idUsuario']);
       }else if($_GET['action'] == 'comprobarUsuario'){
         comprobarUsuario();
       }else if($_GET['action'] == 'iniciarUsuario'){
         iniciarUsuario($_GET['correo'] , $_GET['contrasena']);
       }else if($_GET['action'] == 'deleteCookie'){
         deleteCookie();
+      }else if($_GET['action'] == 'historialEscritorio'){
+        getDesktopApp($_GET['idUsuario']);
+      }else if($_GET['action'] == 'getDetalleCaptura'){
+        getDetalleCaptura($_GET['idCaptura']);
+      }else if($_GET['action'] == 'getIdUsuarioFromCookies'){
+        getIdUsuarioFromCookies();
+      }
+    }
+    function getIdUsuarioFromCookies(){
+      echo $_COOKIE['idUsuario'];
+    }
+
+    function getDetalleCaptura($idCaptura){
+      $conn = getConnection();
+      if($conn){
+        $query = "SELECT * FROM Capturas_Informacion WHERE Idnt_Captura = $idCaptura";
+        $result = $conn -> query($query);
+        $response = array();
+        $count = 0;
+        $response = array();
+        while($row = $result->fetch_assoc()) {
+          $arr = array('Idnt_Captura'=> $row['Idnt_Captura'] , 'Nombre'=>$row['Nombre'] , 
+            'Idnt_Proceso' => $row['ID'] , 'MainWindowTitle'=>$row['MainWindowTitle'] ,
+            'Fecha'=>$row['Fecha_Fin_Sistema']);
+          array_push($response , $arr);
+        }
+        echo json_encode($response);
+        closeConnection($conn);
+      }else{
+       closeConnection($conn);
+       echo 'false';
+      }
+    }
+
+    function getDesktopApp($idUsuario){
+      $conn = getConnection();
+      if($conn){
+        $query = "SELECT * FROM Capturas WHERE Idnt_Usuario = $idUsuario ORDER BY Idnt_Captura DESC";
+        $result = $conn -> query($query);
+        $response = array();
+        $count = 0;
+        while($row = $result->fetch_assoc()) {
+          $arr = array('Count'=>$count , 'Idnt_Captura' => $row['Idnt_Captura'], 'Idnt_Usuario' => $row['Idnt_Usuario'] , 'Fecha_Fin_Sistema'
+          => $row['Fecha_Fin_Sistema'] , 'Token' => $row['Token']);
+          array_push($response, $arr);
+          $count += 1;
+
+        }
+        echo json_encode($response);
+        closeConnection($conn);
+      }else{
+       closeConnection($conn);
+       echo 'false';
       }
     }
 
@@ -39,7 +92,7 @@
       }
 
     }
-    function saveCookies($data){
+    function saveCookies($data , $idUsuario){
       $usuario = utf8_decode($data);
       $name = 'usuario';
       $value = $usuario;
@@ -47,7 +100,14 @@
       $domain = 'localhost';
       setcookie($name , $value , time() + (86400 * 30) , $path , $domain );
 
-      echo $_COOKIE[$name];
+      $usuario = utf8_decode($idUsuario);
+      $id = 'idUsuario';
+      $value = $idUsuario;
+      $path = '/';
+      $domain = 'localhost';
+      setcookie($id , $value , time() + (86400 * 30) , $path , $domain );
+
+      echo $_COOKIE[$name].' | '.$_COOKIE[$id];
     }
     function deleteCookie(){
       setcookie('usuario' , null , -1 , '/');

@@ -42,16 +42,26 @@ function inicioUsuario(){
     $.ajax({
         url: "../script.php?action=iniciarUsuario"+data,
         success: function(result){
-            iniciarUsuario(result.responseText);
+            if(result.responseText){
+                iniciarUsuario(result.responseText);
+            }else{
+                console.log(result);
+            }
+            
         },
         error: function(result){
-            iniciarUsuario(result.responseText);
+            if(result.responseText){
+                iniciarUsuario(result.responseText);
+            }else{
+                console.log(result);
+            }
         }
     });
 
 }
 
 function iniciarUsuario(inicio){
+    console.log(inicio + 'prueba');
     if(inicio.includes('userYes')){
         console.log('usuario logeado');
         let user = inicio.split(';');
@@ -63,7 +73,7 @@ function iniciarUsuario(inicio){
         usuario.nickname = user[6];
         console.log(usuario);
         guardarCookies(usuario);
-        alert('Bienvenido de nuevo: ' + usuario.nickname);
+        alert('Bienvenido de nuevo: ' + usuario.nombre);
         window.open('../' , '_parent');
     }else{
         alert('Usuario no encontrado, intentelo de nuevo');
@@ -84,13 +94,11 @@ function processResponse(result){
         console.log('error');
     }
 }
-function getCookies(){
-
-}
 function guardarCookies(usuario){
     let data = usuario.nickname;
+    let id = usuario.idUsuario;
     $.ajax({
-        url: '../script.php?action=saveCookies&data='+data,
+        url: '../script.php?action=saveCookies&data='+data+'&idUsuario='+id,
         success: function(result){
             console.log(result.responseText);
         },
@@ -100,14 +108,23 @@ function guardarCookies(usuario){
     });
 }
 
+
 function comprobarUsuario(){
     $.ajax({
         url:'../script.php?action=comprobarUsuario',
         success: function(result){
-            setearUsuario(result.responseText);
+            if(result.responseText){
+                setearUsuario(result.responseText);
+            }else{
+                console.log(result);
+            }
         },
         error: function(result){
-            setearUsuario(result.responseText);
+            if(result.responseText){
+                setearUsuario(result.responseText);
+            }else{
+                console.log(result);
+            }
         }
     });
 }
