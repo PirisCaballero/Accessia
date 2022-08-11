@@ -25,8 +25,33 @@
         getDetalleCaptura($_GET['idCaptura']);
       }else if($_GET['action'] == 'getIdUsuarioFromCookies'){
         getIdUsuarioFromCookies();
+      }else if($_GET['action'] == 'guardarPaginaVista'){
+        echo 'he llegado';
+        guardarPaginaVista($_GET['idUsuario'] , $_GET['URL']);
       }
     }
+
+    function guardarPaginaVista($idUsuario , $url){
+      $conn = getConnection();
+      echo $url;
+      if($conn){
+        $query = "INSERT INTO Paginas_Vistas VALUES ('' , '$idUsuario' , '$url' , 0 , '' , '' )";
+          $result = $conn -> query($query);
+          if($result == 1){
+            $arr = array('response' => 'yes');
+            echo json_encode($arr);
+          }else{
+            $arr = array('response' => 'no');
+            echo json_encode($arr);
+          }
+        closeConnection($conn);
+      }else{
+       closeConnection($conn);
+       $arr = array('response' => 'no');
+       echo json_encode($arr)
+      }
+    }
+
     function getIdUsuarioFromCookies(){
       echo $_COOKIE['idUsuario'];
     }
@@ -40,7 +65,7 @@
         $count = 0;
         $response = array();
         while($row = $result->fetch_assoc()) {
-          $arr = array('Idnt_Captura'=> $row['Idnt_Captura'] , 'Nombre'=>$row['Nombre'] , 
+          $arr = array('Idnt_Captura'=> $row['Idnt_Captura'] , 'Nombre'=>$row['Nombre'] ,
             'Idnt_Proceso' => $row['ID'] , 'MainWindowTitle'=>$row['MainWindowTitle'] ,
             'Fecha'=>$row['Fecha_Fin_Sistema']);
           array_push($response , $arr);
@@ -77,14 +102,14 @@
 
     function iniciarUsuario($correo , $contrasena){
       $conn = getConnection();
-      if($conn){                
+      if($conn){
         $query = "SELECT * FROM usuarios WHERE correoUsuario = '$correo' AND contrasenia = '$contrasena'";
         $result = $conn -> query($query);
           // output data of each row
           while($row = $result->fetch_assoc()) {
             $user = 'userYes'.';'.$row['idnt_Usuario'].';'.$row['nombreUsuario'].';'.$row['apellidosUsuario'].';'.$row['correoUsuario'].';'.$row['contrasenia'].';'.$row['apodo'].';'.$row['fechaInicioSistema'];
             echo $user;
-  
+
           }
           closeConnection($conn);
       }else{
