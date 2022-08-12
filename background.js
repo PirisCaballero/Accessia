@@ -3,15 +3,24 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
   getUsuario();
     if(usuario != null && changeInfo.status == 'complete'){
       let url = new URL(tab.url);
+      console.log(url);
       saveURL(url.href);
       comprobarURL(quitarSubdominioIdioma(url.host) , tabId);
     }
   })
 
 function quitarSubdominioIdioma(url , tabId){
-  if(url.substring(0 , 3) == 'es.')
-    console.log(url);
+  if(url.substring(0 , 3) == 'es.'){
+    console.log(url.substring(3 , url.length));
+    return url.substring(3 , url.length);
+  }else if(url.substring(0 , 4) == 'www.'){
+    console.log(url.substring(4 , url.length));
     return url.substring(4 , url.length);
+  }else{
+    console.log(url);
+    return url;
+  }
+
 }
   async function comprobarURL(url , tabId){
     await fetch('http://localhost/script.php?action=comprobarURL&URL='+url, {
