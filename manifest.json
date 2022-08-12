@@ -1,0 +1,27 @@
+{
+  "name": "EXTENSION TFG",
+  "description": "Esta es la descripción de mi extensión",
+  "version": "0.1",
+  "manifest_version": 3,
+  "action" : {
+    "default_popup" : "popup.html",
+    "default_icon" : {
+      "16" : "/img/icon/icon16.png",
+      "32" : "/img/icon/icon32.png",
+      "48" : "/img/icon/icon48.png",
+      "128" : "/img/icon/icon128.png"
+    }
+  },
+  "icons" : {
+    "16" : "/img/icon/icon16.png",
+    "32" : "/img/icon/icon32.png",
+    "48" : "/img/icon/icon48.png",
+    "128" : "/img/icon/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "activeTab", "scripting" , "tabs" , "cookies"],
+  "host_permissions": ["http://localhost/*" ,  "*://*/*"]
+
+}
