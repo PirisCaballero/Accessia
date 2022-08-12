@@ -1,2 +1,0 @@
-# Accessia
-Accessia TFG project
