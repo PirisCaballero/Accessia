@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/styles/styles.css" />
+    <meta charset="utf-8">
+    <title>Mi extensión</title>
+    <script src="/js/functions.js"></script>
+    <script src="jquery-3.6.0.min.js"></script>
+  </head>
+
+  <body>
+    <div id="header">
+      <img src="/img/deusto-logo.jpg">
+      <span id="span-header">ACCESSIA</span>
+    </div>
+
+    <br>
+
+    <div id="bloqueInicioSesion" class="botonBloque">
+        <button class="boton" id="btnInicioSesion">Inicio de sesion</button>
+        <button class="boton" id="btnRegistroUsuario">Registro de usuario</button>
+    </div>
+
+    <br>
+
+    <div id="bloqueDatosDeInicio" style="display: none" class="datosInicioBloque">
+        <input type="text" id="correo" name="correo" placeholder="correo electronico">
+        <input type="password" id="contrasenia" name="contrasenia" placeholder="contraseña">
+
+        <button id="enviarDatosInicioSesion" >Enviar</button>
+
+    </div>
+
+    <br>
+
+    <div id="usuarioIniciado" class="botonBloque" style="display: none">
+      <strong id="labelNombreUsuario">Bienvenido de nuevo: </strong>
+      <span id="nombreUsuario"></span>
+
+      <br>
+
+      <strong>Filtro parental</strong>
+      <input type="checkbox"></input>
+
+      <br>
+
+      <strong>Historico</strong>
+      <input type="checkbox"></input>
+
+      <br>
+
+      <button>Panel de control</button>
+    </div>
+
+  </body>
+
+  <footer>
+    <div id="footer">
+      <p id="footerP">Author: Aitor Piris <br>
+      <a>correo: aitorpiris@opendeusto.com</a></p>
+
+      <button id="btnSalir">Desconectar</button>
+    </div>
+  </footer>
+</html>
