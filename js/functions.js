@@ -6,15 +6,19 @@ function inicioVentana(){
   document.getElementById("btnInicioSesion").addEventListener("click", inicioSesion);
   document.getElementById("enviarDatosInicioSesion").addEventListener("click", envioDatosInicioSesion );
   document.getElementById("btnSalir").addEventListener("click", deslogearUsuario );
+  document.getElementById("btnPanelControl").addEventListener("click" , abrirPanelControl);
 }
 
-
+function abrirPanelControl(){
+  window.open('http://accessia.click/');
+}
 function inicioSesion(){
   document.getElementById('bloqueInicioSesion').style.display = 'none';
   document.getElementById('bloqueDatosDeInicio').style.display = 'block';
 }
 
 function envioDatosInicioSesion(){
+
 
   var usuario = document.getElementById("correo").value;
   var password = document.getElementById("contrasenia").value;
