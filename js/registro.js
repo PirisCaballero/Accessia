@@ -138,8 +138,8 @@ function setearUsuario(resultText){
         document.getElementById('usuarioLabel').style = "margin-left:30%;margin-top:2%;display:block;text-decoration: none;font-family: 'Cormorant Garamond';font-weight: lighter;color: black;font-size: 18;";
         document.getElementById('iconoCerrarSesion').style ="display:block;content:url('../img/cerrar-sesion.png');float: right;margin-right: 1%;margin-top: 0.5%;";
     }else{
-        document.getElementById('iconoCerrarSesion').style ="display:none;content:url('../img/cerrar-sesion.png');float: right;margin-right: 1%;margin-top: 0.5%;";
-        document.getElementById('usuarioLabel').style = "display:none;margin-left:30%;margin-top:2%;text-decoration: none;font-family: 'Cormorant Garamond';font-weight: lighter;color: black;font-size: 18;";
+        document.getElementById('iconoCerrarSesion').style.display = 'none';
+        document.getElementById('usuarioLabel').style.display = 'none';
     }
 }
 
