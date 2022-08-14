@@ -97,14 +97,14 @@
       $name = 'usuario';
       $value = $usuario;
       $path = '/';
-      $domain = 'localhost';
+      $domain = '100.24.253.18';
       setcookie($name , $value , time() + (86400 * 30) , $path , $domain );
 
       $usuario = utf8_decode($idUsuario);
       $id = 'idUsuario';
       $value = $idUsuario;
       $path = '/';
-      $domain = 'localhost';
+      $domain = '100.24.253.18';
       setcookie($id , $value , time() + (86400 * 30) , $path , $domain );
 
       echo $_COOKIE[$name].' | '.$_COOKIE[$id];
