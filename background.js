@@ -23,7 +23,7 @@ function quitarSubdominioIdioma(url , tabId){
 
 }
   async function comprobarURL(url , tabId){
-    await fetch('http://localhost/script.php?action=comprobarURL&URL='+url, {
+    await fetch('http://accessia.click/script.php?action=comprobarURL&URL='+url, {
       method: 'GET',
       mode: 'cors'
     }).then(
@@ -42,7 +42,7 @@ function gestionarRespuestaComprobacionURL(response){
   console.log(response);
 }
 function getUsuario(){
-  chrome.cookies.get({"url": "http://localhost", "name": "usuarioLogeado"}, function(cookie) {
+  chrome.cookies.get({"url": "http://accessia.click", "name": "usuarioLogeado"}, function(cookie) {
       if(cookie && cookie.value != null && cookie.value != ""){
         var user = JSON.parse(cookie.value);
         if(user.idnt_Usuario > 0){
@@ -58,7 +58,7 @@ async function saveURL(url) {
   let datenow = new Date();
   let fecha = generateDatabaseDateTime(datenow);
   if(url != 'chrome://newtab/'){
-    await fetch('http://localhost/script.php?action=guardarPaginaVista&idUsuario='+usuario.idnt_Usuario+'&URL='+url+'&date='+fecha+'&fechaInicioSistema='+fecha, {
+    await fetch('http://accessia.click/script.php?action=guardarPaginaVista&idUsuario='+usuario.idnt_Usuario+'&URL='+url+'&date='+fecha+'&fechaInicioSistema='+fecha, {
       method: 'GET'
     }).then(response => console.log(response));
   }

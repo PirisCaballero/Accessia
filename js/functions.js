@@ -19,7 +19,7 @@ function envioDatosInicioSesion(){
   var usuario = document.getElementById("correo").value;
   var password = document.getElementById("contrasenia").value;
   $.ajax({
-    url: 'http://localhost/script.php?action=inicioSesion&usuario='+usuario +'&password='+password,
+    url: 'http://accessia.click/script.php?action=inicioSesion&usuario='+usuario +'&password='+password,
 
     success: function(response) {
       console.log(response);
@@ -27,7 +27,7 @@ function envioDatosInicioSesion(){
       if(user.idnt_Usuario &&  user.idnt_Usuario > 0){
         usuarioGlobal = user;
         iniciarUsuario(usuarioGlobal);
-        guardarUsuarioEnCookies("usuarioLogeado" , "http://localhost" , usuarioGlobal );
+        guardarUsuarioEnCookies("usuarioLogeado" , "http://accessia.click" , usuarioGlobal );
       }
     },
     error: function(response) {
@@ -37,13 +37,13 @@ function envioDatosInicioSesion(){
 
 function guardarHistorico(){
   var arrayPaginas = [];
-  chrome.cookies.get({"url": "http://localhost", "name": "paginasVistas"}, function(cookie) {
+  chrome.cookies.get({"url": "http://accessia.click", "name": "paginasVistas"}, function(cookie) {
       var paginas = JSON.parse(cookie.value);
       paginas.forEach(function(object){
         arrayPaginas.push(object);
         //TODO enviar a base de datos las paginas vistas
         $.ajax({
-          url: 'http://localhost/script.php?action=guardarHistorico&usuario=1'+'&data='+JSON.stringify(object),
+          url: 'http://accessia.click/script.php?action=guardarHistorico&usuario=1'+'&data='+JSON.stringify(object),
           success: function(response){
             console.log(response)
           },
@@ -55,7 +55,7 @@ function guardarHistorico(){
       });
       chrome.cookies.set({
         "name": "paginasVistas",
-        "url": "http://localhost",
+        "url": "http://accessia.click",
         "value": null
       }, function (cookie) {});
   });
@@ -78,7 +78,7 @@ function iniciarUsuario(user){
 }
 
 function comprobarUsuarioLogeado(){
-  chrome.cookies.get({"url": "http://localhost", "name": "usuarioLogeado"}, function(cookie) {
+  chrome.cookies.get({"url": "http://accessia.click", "name": "usuarioLogeado"}, function(cookie) {
       console.log("valor cookie: " + cookie.value);
       if(cookie && cookie.value != null && cookie.value != ""){
         var user = JSON.parse(cookie.value);
@@ -96,7 +96,7 @@ function deslogearUsuario(){
   guardarHistorico();
   chrome.cookies.set({
     "name": "usuarioLogeado",
-    "url": "http://localhost",
+    "url": "http://accessia.click",
     "value": null
   }, function (cookie) {
     document.getElementById('bloqueInicioSesion').style.display = 'block';
