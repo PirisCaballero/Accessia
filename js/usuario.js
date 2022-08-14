@@ -25,7 +25,7 @@ function añadirFilasHistorial(){
 
 function getIdUsuarioFromCookies(){
     $.ajax({
-        url: '../script.php?action=getIdUsuarioFromCookies',
+        url: 'http://accessia.click/script.php?action=getIdUsuarioFromCookies',
         async:false,
         success: function(result){
             console.log(result + 'result');
@@ -46,7 +46,7 @@ function addDesktopHistorical(){
 function onloadPage(){
     
     $.ajax({
-        url: "../script.php?action=comprobarUsuario",
+        url: "http://accessia.click/script.php?action=comprobarUsuario",
         success: function(result){
             console.log(result);
             processResponseOnLoad(result.responseText);
@@ -62,7 +62,7 @@ function onloadPage(){
 function processResponseOnLoad(response){
     let res = response.includes("Undefined index:");
     if(res){
-        window.open('../' , '_parent');
+        window.open('http://accessia.click/' , '_parent');
     }
 }
 
@@ -91,7 +91,7 @@ function creacionFilas (){
 function creacionFilasTablaApps(idUsuario){
     console.log(idUsuario);
     $.ajax({
-        url: "../script.php?action=historialEscritorio&idUsuario="+idUsuario,
+        url: "http://accessia.click/script.php?action=historialEscritorio&idUsuario="+idUsuario,
         success: function(result){
             window.arrayHistorialEscritorio = result;
             pintarTablaHistorialEscritorio();
@@ -221,7 +221,7 @@ function setGrafico(){
 
 function getDetalleCaptura(idCaptura){
     $.ajax({
-        url: "../script.php?action=getDetalleCaptura&idCaptura="+idCaptura,
+        url: "http://accessia.click/script.php?action=getDetalleCaptura&idCaptura="+idCaptura,
         success: function(result){
             window.arrayDetalleCaptura = result;
             pintarTablaDetalleCaptura();
