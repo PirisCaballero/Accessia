@@ -97,14 +97,14 @@
       $name = 'usuario';
       $value = $usuario;
       $path = '/';
-      $domain = '100.24.253.18';
+      $domain = 'http://accessia.click/';
       setcookie($name , $value , time() + (86400 * 30) , $path , $domain );
 
       $usuario = utf8_decode($idUsuario);
       $id = 'idUsuario';
       $value = $idUsuario;
       $path = '/';
-      $domain = '100.24.253.18';
+      $domain = 'http://accessia.click/';
       setcookie($id , $value , time() + (86400 * 30) , $path , $domain );
 
       echo $_COOKIE[$name].' | '.$_COOKIE[$id];
