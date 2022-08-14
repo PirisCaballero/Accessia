@@ -110,7 +110,8 @@
       echo $_COOKIE[$name].' | '.$_COOKIE[$id];
     }
     function deleteCookie(){
-      setcookie('usuario' , null , -1 , '/');
+      setcookie('usuario' , null , -1 , '/' , 'accessia.click');
+      setcookie('idUsuario' , null , -1 , '/' , 'accessia.click');
     }
 
     function comprobarUsuario(){
