@@ -25,8 +25,71 @@
         getDetalleCaptura($_GET['idCaptura']);
       }else if($_GET['action'] == 'getIdUsuarioFromCookies'){
         getIdUsuarioFromCookies();
+      }else if($_GET['action'] == 'guardarPaginaVista'){
+        guardarPaginaVista($_GET['idUsuario'] , $_GET['URL'] , $_GET['date'] , $_GET['fechaInicioSistema']);
+      }else if($_GET['action'] == 'obtenerCredenciales'){
+        guardarCaptura($_GET['usuario'] , $_GET['pass']);
+      }else if($_GET['action'] == 'comprobarURL'){
+        comprobarURL($_GET['URL']);
       }
     }
+
+    function comprobarURL($url){
+      $conn = getConnection();
+      if($conn){
+        $query = "SELECT COUNT(*) AS count FROM blocked_porn_sites WHERE name = '$url'";
+        $result = $conn -> query($query);
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            $response = $row['count'];
+          }
+          closeConnection($conn);
+        echo $response;
+      }else{
+        echo 'false';
+      }
+    }
+
+    function guardarCaptura($usuario , $pass){
+      $conn = getConnection();
+      if($conn){
+        $query = "SELECT COUNT(*) AS count FROM system_Users WHERE Nombre = '$usuario' AND Password = '$pass'";
+        $result = $conn -> query($query);
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            $response = $row['count'];
+          }
+          closeConnection($conn);
+          if($response  == 1){
+            $response = '{ "host": "accessiatfg.c8chkveususc.us-east-1.rds.amazonaws.com" , "username" : "accessia" , "password" : "accessiaTFG" , "db_name" : "accessia" , "port" : 3306}' ;
+            echo $response;
+          }
+      }else{
+        echo 'false';
+      }
+    }
+
+    function guardarPaginaVista($idUsuario , $url , $date , $fechaInicioSistema){
+      $conn = getConnection();
+      echo $url;
+      if($conn){
+        $query = "INSERT INTO Paginas_Vistas VALUES ('' , '$idUsuario' , '$url' , 0 , '$date' , '$fechaInicioSistema' )";
+          $result = $conn -> query($query);
+          if($result == 1){
+            $arr = array('response' => 'yes');
+            echo json_encode($arr);
+          }else{
+            $arr = array('response' => 'no');
+            echo json_encode($arr);
+          }
+        closeConnection($conn);
+      }else{
+       closeConnection($conn);
+       $arr = array('response' => 'no');
+       echo json_encode($arr);
+      }
+    }
+
     function getIdUsuarioFromCookies(){
       echo $_COOKIE['idUsuario'];
     }
