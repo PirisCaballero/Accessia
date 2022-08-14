@@ -135,7 +135,7 @@ function pintarTablaHistorialEscritorio(){
            fecha.innerHTML = element.Fecha_Fin_Sistema;
            fecha.className="celda";
            acciones.innerHTML = ''+
-           '<form id="formShowCaptura" method="post" action="http://localhost/pages/showCaptura.php" target="_blank">'+
+           '<form id="formShowCaptura" method="post" action="http://accessia.click//pages/showCaptura.php" target="_blank">'+
            '<input type="hidden" name="idCaptura" value="" />'+
            '</form>'+
            '<button class="btnTablaEscritorio" onClick="showCaptura( ' + element.Idnt_Captura + ')">Ver detalle</button>'
