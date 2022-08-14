@@ -1,6 +1,9 @@
 window.tableMax = 10;
 window.tableMin = 0;
 
+window.historialMin = 0;
+window.historialMax = 10;
+
 function añadirFilasHistorial(){
    lista = creacionFilas();
    lista.forEach(element => {
@@ -168,6 +171,15 @@ function addCount(orden){
               }
             pintarTablaHistorialEscritorio();
         }
+    }
+}
+
+function addCountToHistorial(orden){
+    console.log(orden);
+    if(orden == 1){
+
+    }else if(orden == -1){
+
     }
 }
 
