@@ -1,5 +1,5 @@
 window.onload = inicioVentana;
-var usuarioGlobal = null;
+var usuario = null;
 
 function inicioVentana(){
   comprobarUsuarioLogeado();
@@ -7,7 +7,142 @@ function inicioVentana(){
   document.getElementById("enviarDatosInicioSesion").addEventListener("click", envioDatosInicioSesion );
   document.getElementById("btnSalir").addEventListener("click", deslogearUsuario );
   document.getElementById("btnPanelControl").addEventListener("click" , abrirPanelControl);
+
+  document.getElementById("pornFilter").addEventListener("change" , setPornFilterValue);
+  document.getElementById("drugFilter").addEventListener("change" , setDrugFilterValue);
+  document.getElementById("rrssFilter").addEventListener("change" , setRRSSFilterValue);
+  document.getElementById("historialFilter").addEventListener("change" , setHistorialFilterValue);
+
+  document.getElementById("pornFilter").checked = getSavedCookieValue("pornFilter");
+  document.getElementById("drugFilter").checked = getSavedCookieValue("drugFilter");
+  document.getElementById("rrssFilter").checked = getSavedCookieValue("rrssFilter");
+  document.getElementById("historialFilter").checked = getSavedCookieValue("historialFilter");
 }
+function setValue(value , nombreCookie){
+  if(nombreCookie == "pornFilter"){
+    if(value == "true"){
+      document.getElementById("pornFilter").checked = true;
+    }else{
+      document.getElementById("pornFilter").checked = false;
+    }
+  }else if(nombreCookie == "drugFilter"){
+    if(value == "true"){
+      document.getElementById("drugFilter").checked = true;
+    }else{
+      document.getElementById("drugFilter").checked = false;
+    }
+  }else if(nombreCookie == "rrssFilter"){
+    if(value == "true"){
+      document.getElementById("rrssFilter").checked = true;
+    }else{
+      document.getElementById("rrssFilter").checked = false;
+    }
+  }else if(nombreCookie == "historialFilter"){
+    if(value == "true"){
+      document.getElementById("historialFilter").checked = true;
+    }else{
+      document.getElementById("historialFilter").checked = false;
+    }
+  }else{
+
+  }
+}
+function getSavedCookieValue(nombre){
+  chrome.cookies.get({"url": "http://accessia.click", "name": nombre}, function(cookie) {
+    if(cookie && cookie.value != null && cookie.value != ""){
+      setValue(cookie.value , nombre);
+    }
+  });
+}
+function guardarEstadoFiltro(nombreFiltro , estado){
+  chrome.cookies.set({
+    "name": nombreFiltro,
+    "url": "http://accessia.click",
+    "value": estado.toString()
+  }, function (cookie) {
+    console.log(cookie);
+  });
+}
+function setPornFilterValue(){
+  var resp = window.prompt("Contraseña de usuario");
+  if(resp == usuario.contrasenia){
+    if(document.getElementById("pornFilter").checked == false){
+      guardarEstadoFiltro("pornFilter" , document.getElementById("pornFilter").checked );
+    }else if(document.getElementById("pornFilter").checked == true){
+      guardarEstadoFiltro("pornFilter" , document.getElementById("pornFilter").checked );
+    }else{
+      console.log("ERror");
+    }
+  }else{
+    if(document.getElementById("pornFilter").checked == false){
+      document.getElementById("pornFilter").checked = true;
+    }else{
+      document.getElementById("pornFilter").checked = false;
+    }
+    alert("contraseña incorrecta");
+  }
+}
+
+function setRRSSFilterValue(){
+  var resp = window.prompt("Contraseña de usuario");
+  if(resp == usuario.contrasenia){
+  if(document.getElementById("rrssFilter").checked == false){
+    guardarEstadoFiltro("rrssFilter" , document.getElementById("rrssFilter").checked);
+  }else if(document.getElementById("rrssFilter").checked == true){
+    guardarEstadoFiltro("rrssFilter" , document.getElementById("rrssFilter").checked );
+  }else{
+    console.log("ERror");
+  }
+  }else{
+    if(document.getElementById("rrssFilter").checked == false){
+      document.getElementById("rrssFilter").checked = true;
+    }else{
+      document.getElementById("rrssFilter").checked = false;
+    }
+    alert("contraseña incorrecta");
+  }
+}
+
+function setDrugFilterValue(){
+  var resp = window.prompt("Contraseña de usuario");
+  if(resp == usuario.contrasenia){
+  if(document.getElementById("drugFilter").checked == false){
+    guardarEstadoFiltro("drugFilter" , document.getElementById("drugFilter").checked );
+  }else if(document.getElementById("drugFilter").checked == true){
+    guardarEstadoFiltro("drugFilter" , document.getElementById("drugFilter").checked );
+  }else{
+    console.log("ERror");
+  }
+}else{
+  if(document.getElementById("drugFilter").checked == false){
+    document.getElementById("drugFilter").checked = true;
+  }else{
+    document.getElementById("drugFilter").checked = false;
+  }
+  alert("contraseña incorrecta");
+}
+}
+
+function setHistorialFilterValue(){
+  var resp = window.prompt("Contraseña de usuario");
+  if(resp == usuario.contrasenia){
+  if(document.getElementById("historialFilter").checked == false){
+    guardarEstadoFiltro("historialFilter" , document.getElementById("historialFilter").checked );
+  }else if(document.getElementById("historialFilter").checked == true){
+    guardarEstadoFiltro("historialFilter" , document.getElementById("historialFilter").checked );
+  }else{
+    console.log("ERror");
+  }
+}else{
+  if(document.getElementById("historialFilter").checked == false){
+    document.getElementById("historialFilter").checked = true;
+  }else{
+    document.getElementById("historialFilter").checked = false;
+  }
+  alert("contraseña incorrecta");
+}
+}
+
 
 function abrirPanelControl(){
   window.open('http://accessia.click/');
@@ -45,7 +180,6 @@ function guardarHistorico(){
       var paginas = JSON.parse(cookie.value);
       paginas.forEach(function(object){
         arrayPaginas.push(object);
-        //TODO enviar a base de datos las paginas vistas
         $.ajax({
           url: 'http://accessia.click/script.php?action=guardarHistorico&usuario=1'+'&data='+JSON.stringify(object),
           success: function(response){
@@ -83,7 +217,6 @@ function iniciarUsuario(user){
 
 function comprobarUsuarioLogeado(){
   chrome.cookies.get({"url": "http://accessia.click", "name": "usuarioLogeado"}, function(cookie) {
-      console.log("valor cookie: " + cookie.value);
       if(cookie && cookie.value != null && cookie.value != ""){
         var user = JSON.parse(cookie.value);
         if(user.idnt_Usuario > 0){

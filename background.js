@@ -1,14 +1,34 @@
 var usuario = null;
+var pornFilter = null;
+var historial = null;
+
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
   getUsuario();
+  setPornFilterValue();
     if(usuario != null && changeInfo.status == 'complete'){
       let url = new URL(tab.url);
-      console.log(url);
-      saveURL(url.href);
-      comprobarURL(quitarSubdominioIdioma(url.host) , tabId);
+      if(true){
+        saveURL(url.href);
+      }
+      if(pornFilter){
+        comprobarURL(quitarSubdominioIdioma(url.host) , tabId);
+      }
     }
   })
 
+function setPornFilterValue(){
+  chrome.cookies.get({"url": "http://accessia.click", "name": "pornFilter"}, function(cookie) {
+      if(cookie && cookie.value != null && cookie.value != ""){
+        if(cookie.value == "false"){
+          pornFilter = false;
+        }else{
+          pornFilter = true;
+        }
+      }else{
+        console.log("Error al setear valor del pornFilter");
+      }
+  });
+}
 function quitarSubdominioIdioma(url , tabId){
   if(url.substring(0 , 3) == 'es.'){
     console.log(url.substring(3 , url.length));
