@@ -123,3 +123,24 @@
     text-decoration: none;
     color: black;
 }
+.tfg{
+    display: inline-block;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+    font-family: 'Cormorant Garamond';
+    font-size: 23;
+    color: black;
+}
+.TFG_PDF{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+}
+.TFG_PDF object{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10%;
+}
