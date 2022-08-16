@@ -1,17 +1,29 @@
 var usuario = null;
 var pornFilter = null;
-var historial = null;
+var rrssFilter = null;
+var drugFiler = null;
+var historialFilter = null;
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
   getUsuario();
   setPornFilterValue();
+  setRRSSFilterValue();
+  setDrugFilterValue();
+  setHistorialFilterValue();
     if(usuario != null && changeInfo.status == 'complete'){
       let url = new URL(tab.url);
-      if(true){
+
+      if(historialFilter){
         saveURL(url.href);
       }
       if(pornFilter){
         comprobarURL(quitarSubdominioIdioma(url.host) , tabId);
+      }
+      if(rrssFilter){
+        comprobarURLRRSS(quitarSubdominioIdioma(url.host) , tabId);
+      }
+      if(drugFiler){
+        comprobarURLDrogas(quitarSubdominioIdioma(url.host) , tabId);
       }
     }
   })
@@ -26,6 +38,47 @@ function setPornFilterValue(){
         }
       }else{
         console.log("Error al setear valor del pornFilter");
+      }
+  });
+}
+function setRRSSFilterValue(){
+  chrome.cookies.get({"url": "http://accessia.click", "name": "rrssFilter"}, function(cookie) {
+      if(cookie && cookie.value != null && cookie.value != ""){
+        if(cookie.value == "false"){
+          rrssFilter = false;
+        }else{
+          rrssFilter = true;
+        }
+      }else{
+        console.log("Error al setear valor del rrssFilter");
+      }
+  });
+}
+
+function setDrugFilterValue(){
+  chrome.cookies.get({"url": "http://accessia.click", "name": "drugFilter"}, function(cookie) {
+      if(cookie && cookie.value != null && cookie.value != ""){
+        if(cookie.value == "false"){
+          drugFilter = false;
+        }else{
+          drugFilter = true;
+        }
+      }else{
+        console.log("Error al setear valor del drugFilter");
+      }
+  });
+}
+
+function setHistorialFilterValue(){
+  chrome.cookies.get({"url": "http://accessia.click", "name": "historialFilter"}, function(cookie) {
+      if(cookie && cookie.value != null && cookie.value != ""){
+        if(cookie.value == "false"){
+          historialFilter = false;
+        }else{
+          historialFilter = true;
+        }
+      }else{
+        console.log("Error al setear valor del historialFilter");
       }
   });
 }
@@ -44,6 +97,37 @@ function quitarSubdominioIdioma(url , tabId){
 }
   async function comprobarURL(url , tabId){
     await fetch('http://accessia.click/script.php?action=comprobarURL&URL='+url, {
+      method: 'GET',
+      mode: 'cors'
+    }).then(
+    function(response) {
+      // Examine the text in the response
+      response.json().then(function(data) {
+      if(data > 0){
+        chrome.tabs.remove(tabId, function() { });
+      }
+      });
+    }
+  )
+  }
+
+  async function comprobarURLDrogas(url , tabId){
+    await fetch('http://accessia.click/script.php?action=comprobarURLDrogas&URL='+url, {
+      method: 'GET',
+      mode: 'cors'
+    }).then(
+    function(response) {
+      // Examine the text in the response
+      response.json().then(function(data) {
+      if(data > 0){
+        chrome.tabs.remove(tabId, function() { });
+      }
+      });
+    }
+  )
+  }
+  async function comprobarURLRRSS(url , tabId){
+    await fetch('http://accessia.click/script.php?action=comprobarURLRRSS&URL='+url, {
       method: 'GET',
       mode: 'cors'
     }).then(
