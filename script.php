@@ -31,6 +31,44 @@
         guardarCaptura($_GET['usuario'] , $_GET['pass']);
       }else if($_GET['action'] == 'comprobarURL'){
         comprobarURL($_GET['URL']);
+      }else if($_GET['action'] == 'guardarVetado'){
+        guardarVetado($_GET['usuario'] , $_GET['url']);
+      }else if($_GET['action'] == 'comprobarFiltroPersonal'){
+        comprobarFiltroPersonal($_GET['URL'] , $_GET['userID']);
+      }
+    }
+    function comprobarFiltroPersonal($url , $userID){
+      $conn = getConnection();
+      if($conn){
+        $query = "SELECT COUNT(*) AS count FROM blocked_personal_sites WHERE name = '$url' AND idnt_user = $userID";
+        $result = $conn -> query($query);
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            $response = $row['count'];
+          }
+          closeConnection($conn);
+        echo $response;
+      }else{
+        echo 'false';
+      }
+    }
+    function guardarVetado($usuario , $url){
+      $conn = getConnection();
+      if($conn){
+        $query = "INSERT INTO blocked_personal_sites VALUES ('' , '$usuario' , '$url' )";
+          $result = $conn -> query($query);
+          if($result == 1){
+            $arr = array('response' => 'yes');
+            echo json_encode($arr);
+          }else{
+            $arr = array('response' => 'no');
+            echo json_encode($arr);
+          }
+        closeConnection($conn);
+      }else{
+       closeConnection($conn);
+       $arr = array('response' => 'no');
+       echo json_encode($arr);
       }
     }
 

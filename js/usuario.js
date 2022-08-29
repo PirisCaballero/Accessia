@@ -188,9 +188,9 @@ function setGrafico(){
     const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Ocio', 'Formacion', 'Streaming', 'Videojuegos' , 'Otros'],
+            labels: ['Gogole.es', 'Facebook.com', 'pornhub.com', 'xnxx.es' , 'Instagram.com'],
             datasets: [{
-                label: 'Páginas vistas por tipo',
+                label: 'Páginas mas visitadas',
                 data: [12, 19, 3, 5 , 31],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',

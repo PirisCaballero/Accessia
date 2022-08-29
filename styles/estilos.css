@@ -144,3 +144,42 @@
     height: 100%;
     margin-bottom: 10%;
 }
+.descargas{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.tablaDescargas{
+    width: 100%;
+    margin-bottom: 7%;
+}
+.celdaDescargas{
+    text-align: center;
+}
+tr:nth-child(even) {
+    background-color: #b4b3b3;
+    padding: 8px;
+}
+.enlaceD{
+    text-decoration: none;
+    color: black;
+}
+.tituloPagPrincipal{
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-family: 'Cormorant Garamond';
+    font-size: 23;
+}
+.tituloU{
+    width: 100%;
+    position: relative;
+    margin-top: 0px;
+}
+.titulo{
+    width: 100%;
+    position: relative;
+    font-family: 'Cormorant Garamond';
+    font-size: 23;
+}
