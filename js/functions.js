@@ -17,6 +17,45 @@ function inicioVentana(){
   document.getElementById("drugFilter").checked = getSavedCookieValue("drugFilter");
   document.getElementById("rrssFilter").checked = getSavedCookieValue("rrssFilter");
   document.getElementById("historialFilter").checked = getSavedCookieValue("historialFilter");
+
+  document.getElementById("guardarVetado").addEventListener("click", guardarVetado);
+}
+
+function comprobarEstructuraUrl(url){
+  if(url.substring(0 , 4) == 'www.'){
+    return false;
+  }else if(url.substring(0 , 3) == 'es.'){
+    return false;
+  }else if(url.substring(0 , 4) == 'com.'){
+    return false;
+  }
+  else{
+    return true;
+  }
+}
+function guardarVetado(){
+  var dir = document.getElementById("vetar").value;
+  var done = comprobarEstructuraUrl(dir);
+  if(done){
+    $.ajax({
+      url: 'http://localhost/script.php?action=guardarVetado&usuario='+usuario.idnt_Usuario +'&url='+dir,
+  
+      success: function(response) {
+        console.log(response);
+        var res = response;
+        if(res.response == "yes"){
+          document.getElementById("vetar").value = "";
+        }else{
+          alert("Error al guardar la URL");
+        }
+      },
+      error: function(response) {
+        console.log("error: ");console.log(response.responseText)}
+      });
+  }else{
+    alert("La URL debe de ser como la del ejemplo");
+  }
+
 }
 function setValue(value , nombreCookie){
   if(nombreCookie == "pornFilter"){

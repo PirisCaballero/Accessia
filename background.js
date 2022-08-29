@@ -12,7 +12,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
   setHistorialFilterValue();
     if(usuario != null && changeInfo.status == 'complete'){
       let url = new URL(tab.url);
-
+      comprobarFiltroPersonal(quitarSubdominioIdioma(url.host) , tabId);
       if(historialFilter){
         saveURL(url.href);
       }
@@ -126,6 +126,22 @@ function quitarSubdominioIdioma(url , tabId){
     }
   )
   }
+
+  async function comprobarFiltroPersonal(url , tabId){
+      await fetch('http://localhost/script.php?action=comprobarFiltroPersonal&URL='+url+'&userID='+usuario.idnt_Usuario, {
+      method: 'GET',
+      mode: 'cors'
+    }).then(
+    function(response) {
+      // Examine the text in the response
+      response.json().then(function(data) {
+        if(data > 0){
+          chrome.tabs.remove(tabId, function() { });
+        }
+      });
+    }
+    )
+  }
   async function comprobarURLRRSS(url , tabId){
     await fetch('http://accessia.click/script.php?action=comprobarURLRRSS&URL='+url, {
       method: 'GET',
@@ -161,6 +177,7 @@ function generateDatabaseDateTime(date) {
 async function saveURL(url) {
   let datenow = new Date();
   let fecha = generateDatabaseDateTime(datenow);
+  console.log(url);
   if(url != 'chrome://newtab/'){
     await fetch('http://accessia.click/script.php?action=guardarPaginaVista&idUsuario='+usuario.idnt_Usuario+'&URL='+url+'&date='+fecha+'&fechaInicioSistema='+fecha, {
       method: 'GET'
