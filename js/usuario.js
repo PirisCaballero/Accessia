@@ -189,7 +189,11 @@ function setGrafico(){
     const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Gogole.es', 'Facebook.com', 'pornhub.com', 'xnxx.es' , 'Instagram.com'],
+            labels: [window.topPaginasVistasArray[0].URL_Pagina, 
+            window.topPaginasVistasArray[1].URL_Pagina, 
+            window.topPaginasVistasArray[2].URL_Pagina, 
+            window.topPaginasVistasArray[3].URL_Pagina , 
+            window.topPaginasVistasArray[4].URL_Pagina],
             datasets: [{
                 label: 'Páginas mas visitadas',
                 data: [12, 19, 3, 5 , 31],

@@ -56,7 +56,7 @@
         $count = 0;
         $response = array();
         while($row = $result->fetch_assoc()) {
-          $arr = array('URL_Pagina'=> $row['UrlPagina'] , 'Nombre'=>$row['Count']);
+          $arr = array('URL_Pagina'=> $row['UrlPagina'] , 'Count'=>$row['Count']);
           array_push($response , $arr);
         }
         echo json_encode($response);
