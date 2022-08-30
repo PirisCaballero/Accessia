@@ -5,7 +5,6 @@ window.historialMin = 0;
 window.historialMax = 10;
 getIdUsuarioFromCookies();
 getTopPaginasVistas(window.idUsuario);
-historialWeb(window.idUsuario);
 
 function añadirFilasHistorial(){
    lista = creacionFilas();
@@ -81,6 +80,7 @@ function historialWeb(idUsuario){
         url: "http://accessia.click/script.php?action=historialWeb&userID="+idUsuario,
         success: function(result){
             console.log(result);
+            return result;
         },
         error: function(result){
             console.log(result);
@@ -88,16 +88,16 @@ function historialWeb(idUsuario){
     });
 }
 function creacionFilas (){
-    var lista = [];
+    var lista = historialWeb(window.idUsuario);
     //TODO array de historial
-    for( i = 0; i<10 ; i++){
+    /*for( i = 0; i<10 ; i++){
         fila = new Object();
         fila.dominio = "Dominio: "+i;
         fila.url = "URL: "+i;
         fila.tiempo = "Tiempo: "+i;
 
         lista.push(fila);
-    }
+    }*/
     return lista;
 }
 
