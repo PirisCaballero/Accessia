@@ -81,10 +81,10 @@ function getHistorialWeb(){
     $.ajax({
         url: "http://accessia.click/script.php?action=getHistorialWeb&userID="+window.idUsuario,
         success: function(result){
-            console.log(result);
+            console.log(result.responseText);
         },
         error: function(result){
-            console.log(result);
+            console.log(result.responseText);
         }
     });
 }
