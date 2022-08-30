@@ -3,6 +3,8 @@ window.tableMin = 0;
 
 window.historialMin = 0;
 window.historialMax = 10;
+getIdUsuarioFromCookies();
+getTopPaginasVistas(window.idUsuario);
 
 function añadirFilasHistorial(){
    lista = creacionFilas();
@@ -30,12 +32,10 @@ function getIdUsuarioFromCookies(){
         success: function(result){
             console.log(result + 'result');
             window.idUsuario = result;
-            getTopPaginasVistas(window.idUsuario);
         },
         error: function(result){
             console.log(result.responseText);
             window.idUsuario = result;
-            getTopPaginasVistas(window.idUsuario);
         }
     });
 }
@@ -91,7 +91,7 @@ function getHistorialWeb(){
 function creacionFilas (){
     var lista = [];
     //TODO array de historial
-
+    getHistorialWeb();
     for( i = 0; i<10 ; i++){
         fila = new Object();
         fila.dominio = "Dominio: "+i;
