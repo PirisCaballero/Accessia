@@ -170,6 +170,8 @@ function abrirUsuario(){
         var user = decodeURIComponent(cookiePair[1]);
         if( user!= undefined && user > 0){
             window.open("http://accessia.click/pages/usuario.html" , "_self");
+        }else{
+            alert("Debes iniciar sesion para poder acceder a esta ventana");
         }
     }
 }
