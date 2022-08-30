@@ -6,7 +6,7 @@ window.historialMax = 10;
 getIdUsuarioFromCookies();
 getTopPaginasVistas(window.idUsuario);
 
-function añadirFilasHistorial(){
+async function añadirFilasHistorial(){
    lista = await historialWeb(window.idUsuario);
    lista.forEach(element => {
     var tabla = document.getElementById('tablaHistorial');
