@@ -30,11 +30,9 @@ function getIdUsuarioFromCookies(){
         url: 'http://accessia.click/script.php?action=getIdUsuarioFromCookies',
         async:false,
         success: function(result){
-            console.log(result + 'result');
             window.idUsuario = result;
         },
         error: function(result){
-            console.log(result.responseText);
             window.idUsuario = result;
         }
     });
@@ -247,7 +245,6 @@ function getTopPaginasVistas(userID){
         url: "http://accessia.click/script.php?action=getTopPaginasVistas&userID="+userID,
         success: function(result){
             window.topPaginasVistasArray = result;
-            console.log(window.topPaginasVistasArray);
         },
         error: function(result){
             console.log(result);
