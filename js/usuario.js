@@ -5,10 +5,9 @@ window.historialMin = 0;
 window.historialMax = 10;
 getIdUsuarioFromCookies();
 getTopPaginasVistas(window.idUsuario);
+historialWeb(window.idUsuario);
 
-async function añadirFilasHistorial(){
-   await historialWeb(window.idUsuario);
-   console.log(window.arrayHistorialWeb);
+function añadirFilasHistorial(){
    window.arrayHistorialWeb.forEach(element => {
     var tabla = document.getElementById('tablaHistorial');
     var row = tabla.insertRow();
@@ -85,6 +84,7 @@ async function historialWeb(idUsuario){
         error: function(result){
         }
     });
+    añadirFilasHistorial();
 }
 function creacionFilas (){
     //TODO array de historial
