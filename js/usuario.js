@@ -8,7 +8,7 @@ getTopPaginasVistas(window.idUsuario);
 
 async function añadirFilasHistorial(){
    lista = await historialWeb(window.idUsuario);
-   lista.forEach(element => {
+   window.arrayHistorialWeb.forEach(element => {
     var tabla = document.getElementById('tablaHistorial');
     var row = tabla.insertRow();
        var dominio = row.insertCell();
