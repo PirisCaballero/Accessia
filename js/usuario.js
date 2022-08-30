@@ -184,6 +184,7 @@ function addCountToHistorial(orden){
 }
 
 function setGrafico(){
+    getTopPaginasVistas(4);
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
         type: 'bar',
@@ -219,6 +220,19 @@ function setGrafico(){
             });
 }
 
+function getTopPaginasVistas(userID){
+    $.ajax({
+        url: "http://accessia.click/script.php?action=getTopPaginasVistas&userID="+userID,
+        success: function(result){
+            window.topPaginasVistasArray = result;
+            console.log(window.topPaginasVistasArray);
+        },
+        error: function(result){
+            console.log(result);
+            console.log('No results');
+        }
+    });
+}
 function getDetalleCaptura(idCaptura){
     $.ajax({
         url: "http://accessia.click/script.php?action=getDetalleCaptura&idCaptura="+idCaptura,

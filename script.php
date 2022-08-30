@@ -39,16 +39,44 @@
         comprobarURLRRSS($_GET['URL']);
       }else if($_GET['comprobarURLDrogas']){
         comprobarURLDrogas($_GET['url']);
+      }else if($_GET['action'] == 'getTopPaginasVistas'){
+        getTopPaginasVistas($_GET['userID']);
       }
     }
+
+    function getTopPaginasVistas($userID){
+      $conn = getConnection();
+      if($conn){
+        $query = "SELECT  UrlPagina , Count(*) AS Count FROM Paginas_Vistas Where Idnt_Usuario = $userID
+        GROUP BY UrlPagina 
+        HAVING COUNT(*)>1
+        ORDER BY Count DESC";
+        $result = $conn -> query($query);
+        $response = array();
+        $count = 0;
+        $response = array();
+        while($row = $result->fetch_assoc()) {
+          $arr = array('URL_Pagina'=> $row['UrlPagina'] , 'Nombre'=>$row['Count']);
+          array_push($response , $arr);
+        }
+        echo json_encode($response);
+        closeConnection($conn);
+      }else{
+       closeConnection($conn);
+       echo 'false';
+      }
+    }
+
     function comprobarURLDrogas($url){
       $conn = getConnection();
       if($conn){
         $query = "SELECT COUNT(*) AS count FROM blocked_drugs_sites WHERE name = '$url' ";
         $result = $conn -> query($query);
           // output data of each row
+          $arr = array('response' => 'yes');
           while($row = $result->fetch_assoc()) {
             $response = $row['count'];
+            $arr = array('response' => 'yes');
           }
           closeConnection($conn);
         echo $response;
