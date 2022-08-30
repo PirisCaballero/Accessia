@@ -7,7 +7,7 @@ getIdUsuarioFromCookies();
 getTopPaginasVistas(window.idUsuario);
 
 async function añadirFilasHistorial(){
-   lista = await historialWeb(window.idUsuario);
+   await historialWeb(window.idUsuario);
    window.arrayHistorialWeb.forEach(element => {
     var tabla = document.getElementById('tablaHistorial');
     var row = tabla.insertRow();
@@ -81,11 +81,8 @@ async function historialWeb(idUsuario){
         success: function(result){
             console.log(result);
             window.arrayHistorialWeb = result;
-            return result;
         },
         error: function(result){
-            console.log(result);
-            window.arrayHistorialWeb = result;
         }
     });
 }
