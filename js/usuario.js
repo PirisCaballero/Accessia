@@ -5,6 +5,7 @@ window.historialMin = 0;
 window.historialMax = 10;
 getIdUsuarioFromCookies();
 getTopPaginasVistas(window.idUsuario);
+getHistorialWeb();
 
 function añadirFilasHistorial(){
    lista = creacionFilas();
@@ -89,7 +90,6 @@ function getHistorialWeb(){
 function creacionFilas (){
     var lista = [];
     //TODO array de historial
-    getHistorialWeb();
     for( i = 0; i<10 ; i++){
         fila = new Object();
         fila.dominio = "Dominio: "+i;
