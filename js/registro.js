@@ -171,8 +171,6 @@ function abrirUsuario(){
         console.log(user);
         if(user.idnt_Usuario > 0){
             window.open("http://accessia.click/pages/usuario.html" , "_self");
-        }else{
-            window.open("http://accessia.click/" , "_self");
         }
     }
 }
