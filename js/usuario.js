@@ -78,7 +78,7 @@ function slider(){
 
 function getHistorialWeb(){
     $.ajax({
-        url: "http://accessia.click/script.php?action=getHistorialWeb&userID="+window.idUsuario,
+        url: "http://accessia.click/script.php?action=historialEscritorio&idUsuario="+window.idUsuario,
         success: function(result){
             console.log(result.responseText);
         },
