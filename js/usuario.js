@@ -261,12 +261,3 @@ function pintarTablaDetalleCaptura(){
         }
        });
 }
-
-function abrirUsuario(){
-    alert(window.idUsuario);
-    if(window.idUsuario != null && window.idUsuario != 0){
-        window.open('http://accessia.click/usuario.html' , '_self');
-    }else{
-        window.open('http://accessia.click/' , '_self');
-    }
-}
