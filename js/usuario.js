@@ -80,9 +80,11 @@ function historialWeb(idUsuario){
     $.ajax({
         url: "http://accessia.click/script.php?action=historialWeb&userID="+idUsuario,
         success: function(result){
+            console.log(result);
             window.arrayHistorialWeb = result;
         },
         error: function(result){
+            console.log(result);
             window.arrayHistorialWeb = result;
         }
     });
