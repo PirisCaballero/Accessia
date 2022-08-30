@@ -5,9 +5,9 @@ window.historialMin = 0;
 window.historialMax = 10;
 getIdUsuarioFromCookies();
 getTopPaginasVistas(window.idUsuario);
-historialWeb(window.idUsuario);
 
 function añadirFilasHistorial(){
+    historialWeb(window.idUsuario);
    lista = window.arrayHistorialWeb;
    lista.forEach(element => {
     var tabla = document.getElementById('tablaHistorial');
