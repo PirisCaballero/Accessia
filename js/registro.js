@@ -161,12 +161,20 @@ function pantallaUsuario(){
     alert('Pantalla de usuario');
 }
 function abrirUsuario(){
-    chrome.cookies.get({"url": "http://accessia.click", "name": "usuarioLogeado"}, function(cookie) {
-      if(cookie && cookie.value != null && cookie.value != ""){
-        var user = JSON.parse(cookie.value);
-        console.log(user);
-      }else{
-          console.log("no usuario");
-      }
-  });
+
+  var cookieArr = document.cookie.split(";");
+  for(var i = 0; i < cookieArr.length; i++) {
+    var cookiePair = cookieArr[i].split("=");
+    
+    if("usuarioLogeado" == cookiePair[0].trim()) {
+        var user = decodeURIComponent(cookiePair[1]);
+        if(user.idnt_Usuario > 0){
+            window.open("http://accessia.click/pages/usuario.html" , "_self");
+        }else{
+            window.open("http://accessia.click/" , "_self");
+        }
+    }else{
+        window.open("http://accessia.click/" , "_self");
+    }
+}
 }
