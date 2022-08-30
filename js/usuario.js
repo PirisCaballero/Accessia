@@ -8,6 +8,7 @@ getTopPaginasVistas(window.idUsuario);
 
 async function añadirFilasHistorial(){
    await historialWeb(window.idUsuario);
+   console.log(window.arrayHistorialWeb);
    window.arrayHistorialWeb.forEach(element => {
     var tabla = document.getElementById('tablaHistorial');
     var row = tabla.insertRow();
@@ -79,7 +80,6 @@ async function historialWeb(idUsuario){
     $.ajax({
         url: "http://accessia.click/script.php?action=historialWeb&userID="+idUsuario,
         success: function(result){
-            console.log(result);
             window.arrayHistorialWeb = result;
         },
         error: function(result){
