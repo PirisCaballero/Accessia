@@ -161,8 +161,8 @@ function pantallaUsuario(){
     alert('Pantalla de usuario');
 }
 function abrirUsuario(){
-    alert(window.idUsuario);
-    if(window.idUsuario != null && window.idUsuario != 0){
+    console.log(usuario);
+    if(usuario != null && usuario.idnt_Usuario != 0){
         window.open('http://accessia.click/usuario.html' , '_self');
     }else{
         window.open('http://accessia.click/' , '_self');
