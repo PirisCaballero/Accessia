@@ -5,7 +5,7 @@ window.historialMin = 0;
 window.historialMax = 10;
 getIdUsuarioFromCookies();
 getTopPaginasVistas(window.idUsuario);
-historialWeb(4);
+historialWeb(window.idUsuario);
 
 function añadirFilasHistorial(){
    lista = creacionFilas();
@@ -80,10 +80,10 @@ function historialWeb(idUsuario){
     $.ajax({
         url: "http://accessia.click/script.php?action=historialWeb&userID="+idUsuario,
         success: function(result){
-            console.log(result.responseText);
+            console.log(result);
         },
         error: function(result){
-            console.log(result.responseText);
+            console.log(result);
         }
     });
 }
