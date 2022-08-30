@@ -35,6 +35,40 @@
         guardarVetado($_GET['usuario'] , $_GET['url']);
       }else if($_GET['action'] == 'comprobarFiltroPersonal'){
         comprobarFiltroPersonal($_GET['URL'] , $_GET['userID']);
+      }else if($_GET['action'] == 'comprobarURLRRSS'){
+        comprobarURLRRSS($_GET['URL']);
+      }else if($_GET['comprobarURLDrogas']){
+        comprobarURLDrogas($_GET['url']);
+      }
+    }
+    function comprobarURLDrogas($url){
+      $conn = getConnection();
+      if($conn){
+        $query = "SELECT COUNT(*) AS count FROM blocked_drugs_sites WHERE name = '$url' ";
+        $result = $conn -> query($query);
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            $response = $row['count'];
+          }
+          closeConnection($conn);
+        echo $response;
+      }else{
+        echo 'false';
+      }
+    }
+    function comprobarURLRRSS($url){
+      $conn = getConnection();
+      if($conn){
+        $query = "SELECT COUNT(*) AS count FROM blocked_rrss_sites WHERE name = '$url' ";
+        $result = $conn -> query($query);
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            $response = $row['count'];
+          }
+          closeConnection($conn);
+        echo $response;
+      }else{
+        echo 'false';
       }
     }
     function comprobarFiltroPersonal($url , $userID){
