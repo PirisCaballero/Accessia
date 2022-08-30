@@ -3,7 +3,6 @@ window.tableMin = 0;
 
 window.historialMin = 0;
 window.historialMax = 10;
-getTopPaginasVistas(4);
 
 function añadirFilasHistorial(){
    lista = creacionFilas();
@@ -31,10 +30,12 @@ function getIdUsuarioFromCookies(){
         success: function(result){
             console.log(result + 'result');
             window.idUsuario = result;
+            getTopPaginasVistas(window.idUsuario);
         },
         error: function(result){
             console.log(result.responseText);
             window.idUsuario = result;
+            getTopPaginasVistas(window.idUsuario);
         }
     });
 }
@@ -76,8 +77,21 @@ function slider(){
     console.log("slider status: "+document.getElementById("slider").value);
 }
 
+function getHistorialWeb(){
+    $.ajax({
+        url: "http://accessia.click/script.php?action=getHistorialWeb&userID="+window.idUsuario,
+        success: function(result){
+            console.log(result);
+        },
+        error: function(result){
+            console.log(result);
+        }
+    });
+}
 function creacionFilas (){
     var lista = [];
+    //TODO array de historial
+
     for( i = 0; i<10 ; i++){
         fila = new Object();
         fila.dominio = "Dominio: "+i;

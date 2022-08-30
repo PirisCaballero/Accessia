@@ -41,6 +41,28 @@
         comprobarURLDrogas($_GET['url']);
       }else if($_GET['action'] == 'getTopPaginasVistas'){
         getTopPaginasVistas($_GET['userID']);
+      }else if($_GET['action'] == 'getHistorialWeb'){
+        getHistorialWeb($_GET['userID']);
+      }
+    }
+    function getHistorialWeb($userID){
+      $conn = getConnection();
+      if($conn){
+        $query = "SELECT Idnt_PaginaVista , Idnt_Usuario , UrlPagina , FechaAccesoPagina FROM Paginas_Vistas WHERE Idnt_Usuario = $userID";
+        $result = $conn -> query($query);
+        $response = array();
+        $count = 0;
+        $response = array();
+        while($row = $result->fetch_assoc()) {
+          $arr = array('Idnt_PaginaVista'=> $row['Idnt_PaginaVista'] , 'Idnt_Usuario'=>$row['Idnt_Usuario'] , 
+            'UrlPagina' => $row['UrlPagina'] , 'FechaAccesoPagina'=>$row['FechaAccesoPagina'] );
+          array_push($response , $arr);
+        }
+        echo json_encode($response);
+        closeConnection($conn);
+      }else{
+       closeConnection($conn);
+       echo 'false';
       }
     }
 
