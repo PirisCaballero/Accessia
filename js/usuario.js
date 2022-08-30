@@ -5,7 +5,7 @@ window.historialMin = 0;
 window.historialMax = 10;
 getIdUsuarioFromCookies();
 getTopPaginasVistas(window.idUsuario);
-historialWeb(window.idUsuario);
+historialWeb(4);
 
 function añadirFilasHistorial(){
    lista = creacionFilas();
