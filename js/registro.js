@@ -161,10 +161,12 @@ function pantallaUsuario(){
     alert('Pantalla de usuario');
 }
 function abrirUsuario(){
-    console.log(usuario);
-    if(usuario != null && usuario.idUsuario != 0){
-        window.open('http://accessia.click/pages/usuario.html' , '_self');
-    }else{
-        window.open('http://accessia.click/' , '_self');
-    }
+    chrome.cookies.get({"url": "http://accessia.click", "name": "usuarioLogeado"}, function(cookie) {
+      if(cookie && cookie.value != null && cookie.value != ""){
+        var user = JSON.parse(cookie.value);
+        console.log(user);
+      }else{
+          console.log("no usuario");
+      }
+  });
 }
