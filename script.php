@@ -41,7 +41,7 @@
         comprobarURLDrogas($_GET['url']);
       }else if($_GET['action'] == 'getTopPaginasVistas'){
         getTopPaginasVistas($_GET['userID']);
-      }else if($_GET['action'] == 'getHistorialWeb'){
+      }else if($_GET['action'] == 'historialWeb'){
         getHistorialWeb($_GET['userID']);
       }
     }
