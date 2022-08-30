@@ -169,7 +169,9 @@ function abrirUsuario(){
     if("usuarioLogeado" == cookiePair[0].trim()) {
         var user = decodeURIComponent(cookiePair[1]);
         console.log(user);
-        if(user.idnt_Usuario != "0"){
+        console.log(user.idnt_Usuario);
+        console.log(user.idnt_Usuario+100);
+        if(user.idnt_Usuario != 0){
             window.open("http://accessia.click/pages/usuario.html" , "_self");
         }
     }
