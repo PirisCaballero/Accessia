@@ -171,9 +171,9 @@ function abrirUsuario(){
         console.log(user);
         console.log(user.idnt_Usuario);
         console.log(user.idnt_Usuario+100);
-        if(user.idnt_Usuario != 0){
+        /*if(user.idnt_Usuario != 0){
             window.open("http://accessia.click/pages/usuario.html" , "_self");
-        }
+        }*/
     }
 }
 }
