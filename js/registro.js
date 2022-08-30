@@ -174,8 +174,6 @@ function abrirUsuario(){
         }else{
             window.open("http://accessia.click/" , "_self");
         }
-    }else{
-        window.open("http://accessia.click/" , "_self");
     }
 }
 }
