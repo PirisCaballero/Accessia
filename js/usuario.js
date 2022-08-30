@@ -185,7 +185,6 @@ function addCountToHistorial(orden){
 }
 
 function setGrafico(){
-    window.topPaginasVistasArray.forEach(element => {console.log(element)});
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
         type: 'bar',
@@ -197,7 +196,11 @@ function setGrafico(){
             window.topPaginasVistasArray[4].URL_Pagina],
             datasets: [{
                 label: 'Páginas mas visitadas',
-                data: [12, 19, 3, 5 , 31],
+                data: [window.topPaginasVistasArray[0].Count,
+                    window.topPaginasVistasArray[1].Count, 
+                    window.topPaginasVistasArray[2].Count, 
+                    window.topPaginasVistasArray[3].Count, 
+                    window.topPaginasVistasArray[4].Count],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
