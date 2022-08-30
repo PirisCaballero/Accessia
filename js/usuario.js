@@ -8,7 +8,7 @@ getTopPaginasVistas(window.idUsuario);
 historialWeb(window.idUsuario);
 
 function añadirFilasHistorial(){
-   lista = creacionFilas();
+   lista = window.arrayHistorialWeb;
    lista.forEach(element => {
     var tabla = document.getElementById('tablaHistorial');
     var row = tabla.insertRow();
