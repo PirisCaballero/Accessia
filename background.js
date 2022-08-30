@@ -128,7 +128,7 @@ function quitarSubdominioIdioma(url , tabId){
   }
 
   async function comprobarFiltroPersonal(url , tabId){
-      await fetch('http://localhost/script.php?action=comprobarFiltroPersonal&URL='+url+'&userID='+usuario.idnt_Usuario, {
+      await fetch('http://accessia.click/script.php?action=comprobarFiltroPersonal&URL='+url+'&userID='+usuario.idnt_Usuario, {
       method: 'GET',
       mode: 'cors'
     }).then(
@@ -143,7 +143,7 @@ function quitarSubdominioIdioma(url , tabId){
     )
   }
   async function comprobarURLRRSS(url , tabId){
-    await fetch('http://accessia.click/script.php?action=comprobarURLRRSS&URL='+url, {
+    await fetch('http://localhost/script.php?action=comprobarURLRRSS&URL='+url, {
       method: 'GET',
       mode: 'cors'
     }).then(

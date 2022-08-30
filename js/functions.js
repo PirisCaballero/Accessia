@@ -38,7 +38,7 @@ function guardarVetado(){
   var done = comprobarEstructuraUrl(dir);
   if(done){
     $.ajax({
-      url: 'http://localhost/script.php?action=guardarVetado&usuario='+usuario.idnt_Usuario +'&url='+dir,
+      url: 'http://accessia.click/script.php?action=guardarVetado&usuario='+usuario.idnt_Usuario +'&url='+dir,
   
       success: function(response) {
         console.log(response);
