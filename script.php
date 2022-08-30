@@ -48,14 +48,14 @@
     function getHistorialWeb($userID){
       $conn = getConnection();
       if($conn){
-        $query = "SELECT Idnt_PaginaVista , Idnt_Usuario , UrlPagina , FechaAccesoPagina FROM Paginas_Vistas WHERE Idnt_Usuario = $userID";
+        $query = "SELECT Idnt_PaginaVista , Idnt_Usuario , UrlPagina , FechaAccessoPagina FROM Paginas_Vistas WHERE Idnt_Usuario = $userID";
         $result = $conn -> query($query);
         $response = array();
         $count = 0;
         $response = array();
         while($row = $result->fetch_assoc()) {
           $arr = array('Idnt_PaginaVista'=> $row['Idnt_PaginaVista'] , 'Idnt_Usuario'=>$row['Idnt_Usuario'] , 
-            'UrlPagina' => $row['UrlPagina'] , 'FechaAccesoPagina'=>$row['FechaAccesoPagina'] );
+            'UrlPagina' => $row['UrlPagina'] , 'FechaAccesoPagina'=>$row['FechaAccessoPagina'] );
           array_push($response , $arr);
         }
         echo json_encode($response);
