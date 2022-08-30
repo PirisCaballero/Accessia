@@ -3,6 +3,7 @@ window.tableMin = 0;
 
 window.historialMin = 0;
 window.historialMax = 10;
+getTopPaginasVistas(4);
 
 function añadirFilasHistorial(){
    lista = creacionFilas();
