@@ -92,16 +92,20 @@
                     </div>
                     <script>
                         function generarPDF(){
-                            const doc = new jsPDF();
-                            autoTable(doc, {
-                                head: [['Name', 'Email', 'Country']],
-                                body: [
-                                ['David', 'david@example.com', 'Sweden'],
-                                ['Castille', 'castille@example.com', 'Spain'],
-                                // ...
-                                ],
-                            })
-                            doc.save('accessia.pdf');
+                            var pdf = new jsPDF();
+                            pdf.text(20,20,"Mostrando una Tabla con JsPDF y el Plugin AutoTable");
+
+                            var columns = ["Id", "Nombre", "Email", "Pais"];
+                            var data = [
+                            [1, "Hola", "hola@gmail.com", "Mexico"],
+                            [2, "Hello", "hello@gmail.com", "Estados Unidos"],
+                            [3, "Otro", "otro@gmail.com", "Otro"] ];
+
+                            pdf.autoTable(columns,data,
+                            { margin:{ top: 25 }}
+                            );
+
+                            pdf.save('prueba.pdf');
                         }
                     </script>
                 </div>
