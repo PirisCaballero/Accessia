@@ -5,22 +5,6 @@ window.historialMin = 0;
 window.historialMax = 10;
 getIdUsuarioFromCookies();
 historialWeb(window.idUsuario);
-generarPDF();
-
-function generarPDF(){
-    var doc = new jsPDF();
-    var elementHTML = $('#graficos').html();
-    doc.fromHTML(elementHTML, 15, 15, {
-        'width': 400
-    });
-
-    // Save the PDF
-    doc.save('sample-document.pdf');
-    var string = doc.output('datauristring');
-    var x = window.open();
-    x.document.open();
-    x.document.location=string;
-}
 
 function añadirFilasHistorial(arrayHistorial){
     arrayHistorial.forEach(element => {
