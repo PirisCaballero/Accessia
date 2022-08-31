@@ -13,11 +13,11 @@ function añadirFilasHistorial(arrayHistorial){
        var dominio = row.insertCell();
        var url = row.insertCell();
        var tiempo = row.insertCell();
-       dominio.innerHTML = element.idnt_PaginaVista;
+       dominio.innerHTML = element.Idnt_PaginaVista;
        dominio.className="celda";
        url.innerHTML = element.UrlPagina;
        url.className="celda";
-       tiempo.innerHTML = element.FechaAccessoPagina;
+       tiempo.innerHTML = element.FechaAccesoPagina;
        tiempo.className="celda";
    });
 
