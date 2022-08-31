@@ -86,15 +86,6 @@ async function historialWeb(idUsuario){
     });
 }
 function creacionFilas (){
-    //TODO array de historial
-    /*for( i = 0; i<10 ; i++){
-        fila = new Object();
-        fila.dominio = "Dominio: "+i;
-        fila.url = "URL: "+i;
-        fila.tiempo = "Tiempo: "+i;
-
-        lista.push(fila);
-    }*/
     return window.arrayHistorialWeb;
 }
 
