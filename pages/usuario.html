@@ -95,11 +95,10 @@
                             var pdf = new jsPDF();
                             pdf.text(20,20,"Mostrando una Tabla con JsPDF y el Plugin AutoTable");
 
-                            var columns = ["Id", "Nombre", "Email", "Pais"];
+                            var columns = ["Id", "URL", "Fecha de acceso"];
                             var data = [
-                            [1, "Hola", "hola@gmail.com", "Mexico"],
-                            [2, "Hello", "hello@gmail.com", "Estados Unidos"],
-                            [3, "Otro", "otro@gmail.com", "Otro"] ];
+                                [1 , 'google.es' , '01/09/2022']
+                            ];
 
                             pdf.autoTable(columns,data,
                             { margin:{ top: 25 }}
