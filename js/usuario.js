@@ -108,8 +108,10 @@ function getHistorialEscritorioPDF(){
     var lista = [];
     window.arrayHistorialEscritorio.forEach(element =>{
         var lista2 = [element.idCaptura , element.fecha];
+        console.log(lista2);
         lista.push(lista2);
     });
+    console.log(lista);
     return lista;
 }
 function pintarTablaHistorialEscritorio(){
