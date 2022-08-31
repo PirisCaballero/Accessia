@@ -93,9 +93,9 @@
                     <script>
                         function generarPDF(){
                             var pdf = new jsPDF();
-                            pdf.text(20,20,"Mostrando una Tabla con JsPDF y el Plugin AutoTable");
+                            pdf.text(20,20,"Tabla de las capturas generadas");
 
-                            var columns = ["Id", "Fecha de acceso"];
+                            var columns = ["Id captura", "Fecha de generacion"];
                             var data = getHistorialEscritorioPDF();
 
                             pdf.autoTable(columns,data,

@@ -107,7 +107,7 @@ function creacionFilasTablaApps(idUsuario){
 function getHistorialEscritorioPDF(){
     var lista = [];
     window.arrayHistorialEscritorio.forEach(element =>{
-        var lista2 = [element.idCaptura , element.fecha];
+        var lista2 = [element.Idnt_Captura , element.Fecha_Fin_Sistema];
         console.log(lista2);
         lista.push(lista2);
     });
