@@ -48,8 +48,7 @@
     function getHistorialWeb($userID){
       $conn = getConnection();
       if($conn){
-        $query = "SELECT Idnt_PaginaVista , Idnt_Usuario , UrlPagina , FechaAccessoPagina FROM Paginas_Vistas WHERE Idnt_Usuario = $userID
-          ORDER BY Idnt_PaginaVista DESC";
+        $query = "SELECT Idnt_PaginaVista , Idnt_Usuario , UrlPagina , FechaAccessoPagina FROM Paginas_Vistas WHERE Idnt_Usuario = $userID ORDER BY Idnt_PaginaVista DESC";
         $result = $conn -> query($query);
         $response = array();
         $count = 0;
