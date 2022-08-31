@@ -95,10 +95,8 @@
                             var pdf = new jsPDF();
                             pdf.text(20,20,"Mostrando una Tabla con JsPDF y el Plugin AutoTable");
 
-                            var columns = ["Id", "URL", "Fecha de acceso"];
-                            var data = [
-                                [1 , 'google.es' , '01/09/2022']
-                            ];
+                            var columns = ["Id", "Fecha de acceso"];
+                            var data = getHistorialEscritorioPDF();
 
                             pdf.autoTable(columns,data,
                             { margin:{ top: 25 }}

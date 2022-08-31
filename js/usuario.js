@@ -104,6 +104,14 @@ function creacionFilasTablaApps(idUsuario){
         }
     });
 }
+function getHistorialEscritorioPDF(){
+    var lista = [];
+    window.arrayHistorialEscritorio.forEach(element =>{
+        var lista2 = [element.idCaptura , element.fecha];
+        lista.push(lista2);
+    });
+    return lista;
+}
 function pintarTablaHistorialEscritorio(){
     var tabla = document.getElementById('tablaDesktopApps');
     var header = tabla.createTHead();
