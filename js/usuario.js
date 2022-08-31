@@ -1,3 +1,6 @@
+import jsPDF from "jspdf";
+import autoTable from 'jspdf-autotable';
+
 window.tableMax = 10;
 window.tableMin = 0;
 
