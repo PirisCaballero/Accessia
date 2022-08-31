@@ -5,6 +5,13 @@ window.historialMin = 0;
 window.historialMax = 10;
 getIdUsuarioFromCookies();
 historialWeb(window.idUsuario);
+pdf();
+
+function pdf(){
+    const doc = new jsPDF()
+    doc.autoTable({ html: '#tablaHistorial' })
+    doc.save('table.pdf')
+}
 
 function añadirFilasHistorial(arrayHistorial){
     arrayHistorial.forEach(element => {
