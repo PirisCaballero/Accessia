@@ -42,6 +42,24 @@
                               </thead>
                         </table>
                     </div>
+                    <div class="divBtnPDF">
+                        <button class="btnPDF" onclick="generarPDF()">Descargar</button>
+                    </div>
+                    <script>
+                        function generarPDF(){
+                            var pdf = new jsPDF();
+                            pdf.text(20,20,"Tabla de las capturas generadas");
+
+                            var columns = ["Id captura", "Fecha de generacion"];
+                            var data = getHistorialEscritorioPDF();
+
+                            pdf.autoTable(columns,data,
+                            { margin:{ top: 25 },margin:{bottom: 50}}
+                            );
+
+                            pdf.save('prueba.pdf');
+                        }
+                    </script>
                 </div>
 
 
@@ -79,6 +97,24 @@
                     <script type="text/javascript">
                         addDesktopHistorical();
                     </script>
+                    <div class="divBtnPDF">
+                        <button class="btnPDF" onclick="generarPDF2()">Descargar</button>
+                    </div>
+                    <script>
+                        function generarPDF2(){
+                            var pdf = new jsPDF();
+                            pdf.text(20,20,"Tabla de las capturas generadas");
+
+                            var columns = ["Id Pagina Vista", "URL" , "Fecha de acceso"];
+                            var data = getHistorialEscritorioPDF2();
+
+                            pdf.autoTable(columns,data,
+                            { margin:{ top: 25 },margin:{bottom: 50}}
+                            );
+
+                            pdf.save('prueba.pdf');
+                        }
+                    </script>
                 </div>
 
                 <div class="pdf">
@@ -87,31 +123,6 @@
                         <br>
                         <span class="tituloU">_______________</span>
                     </div>
-                    <div class="divBtnPDF">
-                        <button class="btnPDF" onclick="generarPDF()">Descargar</button>
-                    </div>
-                    <script>
-                        function generarPDF(){
-                            var pdf = new jsPDF();
-                            pdf.text(20,20,"Tabla de las capturas generadas");
-
-                            var columns = ["Id captura", "Fecha de generacion"];
-                            var data = getHistorialEscritorioPDF();
-
-                            pdf.autoTable(columns,data,
-                            { margin:{ top: 25 },margin:{bottom: 50}}
-                            );
-
-                            pdf.text(20,500,"Tabla del historial");
-                            var columnsHs = ["Id pagina vista", "Url" , "Fecha de acceso"];
-                            var dataHs = getHistorialEscritorioPDF2();
-                            pdf.autoTable(columnsHs,dataHs,
-                            { margin:{ top: 25 },margin:{bottom: 50}}
-                            );
-
-                            pdf.save('prueba.pdf');
-                        }
-                    </script>
                 </div>
                 
 
