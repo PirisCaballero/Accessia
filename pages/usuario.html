@@ -93,22 +93,19 @@
                     <script>
                         function generarPDF(){
                             var pdf = new jsPDF();
-                            pdf.text(20,20,"Tabla de las capturas generadas");
+                            //pdf.text(20,20,"Tabla de las capturas generadas");
 
                             var columns = ["Id captura", "Fecha de generacion"];
                             var data = getHistorialEscritorioPDF();
 
-                            pdf.autoTable(columns,data,
-                            { margin:{ top: 25 }}
-                            );
+                            pdf.autoTable(columns, data);
 
                             //pdf.text(20,500,"Tabla del historial");
                             var columnsHs = ["Id pagina vista", "Url" , "Fecha de acceso"];
                             var dataHs = getHistorialEscritorioPDF2();
-                            pdf.autoTable(columnsHs,dataHs,
-                            { margin:{ top: 25 },
-                              startY: pdf.lastAutoTable.finalY + 50}
-                            );
+                            pdf.autoTable(columnsHs, dataHs, {
+                                startY: pdf.lastAutoTable.finalY + 50
+                            });
 
                             pdf.save('prueba.pdf');
                         }
