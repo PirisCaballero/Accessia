@@ -1,6 +1,3 @@
-import jsPDF from "jspdf";
-import autoTable from 'jspdf-autotable';
-
 window.tableMax = 10;
 window.tableMin = 0;
 
@@ -9,18 +6,7 @@ window.historialMax = 10;
 getIdUsuarioFromCookies();
 historialWeb(window.idUsuario);
 
-function generarPDF(){
-    const doc = new jsPDF();
-    autoTable(doc, {
-        head: [['Name', 'Email', 'Country']],
-        body: [
-          ['David', 'david@example.com', 'Sweden'],
-          ['Castille', 'castille@example.com', 'Spain'],
-          // ...
-        ],
-      })
-    doc.save('accessia.pdf');
-}
+
 
 function añadirFilasHistorial(arrayHistorial){
     arrayHistorial.forEach(element => {
