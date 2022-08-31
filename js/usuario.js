@@ -243,6 +243,7 @@ function getTopPaginasVistas(userID){
         url: "http://accessia.click/script.php?action=getTopPaginasVistas&userID="+userID,
         success: function(result){
             window.topPaginasVistasArray = result;
+            setGrafico(result);
         },
         error: function(result){
             console.log(result);
