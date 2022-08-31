@@ -114,6 +114,15 @@ function getHistorialEscritorioPDF(){
     console.log(lista);
     return lista;
 }
+function getHistorialEscritorioPDF2(){ 
+    var lista = [];
+    window.arrayHistorialWeb.forEach(element =>{
+        var lista2 = [element.Idnt_Captura , element.Fecha_Fin_Sistema];
+        console.log(lista2);
+        lista.push(lista2);
+    });
+    return lista;
+}
 function pintarTablaHistorialEscritorio(){
     var tabla = document.getElementById('tablaDesktopApps');
     var header = tabla.createTHead();

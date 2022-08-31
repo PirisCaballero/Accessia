@@ -102,6 +102,13 @@
                             { margin:{ top: 25 }}
                             );
 
+                            pdf.text(20,20,"Tabla del historial");
+                            var columnsHs = ["Id pagina vista", "Url" , "Fecha de acceso"];
+                            var dataHs = getHistorialEscritorioPDF2();
+                            pdf.autoTable(columns,data,
+                            { margin:{ top: 25 }}
+                            );
+
                             pdf.save('prueba.pdf');
                         }
                     </script>
