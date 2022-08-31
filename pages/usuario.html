@@ -56,10 +56,8 @@
                         <script>
                             getTopPaginasVistas();
                             const doc = new jsPDF()
-
-                            // It can parse html:
-                            // <table id="my-table"><!-- ... --></table>
-                            autoTable(doc, { html: '#tablaHistorial' })
+                            doc.autoTable({ html: '#tablaHistorial' })
+                            doc.save('table.pdf')
                         </script>
                     </div>
                 </div>
