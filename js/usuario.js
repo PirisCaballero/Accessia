@@ -16,12 +16,10 @@ function generarPDF(){
 
     // Save the PDF
     doc.save('sample-document.pdf');
-    var string = doc.output('http://accessia.click/sample-document.pdf');
-    var embed = "<embed width='100%' height='100%' src='" + string + "'/>"
+    var string = doc.output('datauristring');
     var x = window.open();
     x.document.open();
-    x.document.write(embed);
-    x.document.close();
+    x.document.location=string;
 }
 
 function añadirFilasHistorial(arrayHistorial){
