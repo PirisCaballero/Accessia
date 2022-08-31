@@ -7,8 +7,8 @@ getIdUsuarioFromCookies();
 getTopPaginasVistas(window.idUsuario);
 historialWeb(window.idUsuario);
 
-function añadirFilasHistorial(){
-   window.arrayHistorialWeb.forEach(element => {
+function añadirFilasHistorial(arrayHistorial){
+    arrayHistorial.forEach(element => {
     var tabla = document.getElementById('tablaHistorial');
     var row = tabla.insertRow();
        var dominio = row.insertCell();
@@ -80,11 +80,11 @@ async function historialWeb(idUsuario){
         url: "http://accessia.click/script.php?action=historialWeb&userID="+idUsuario,
         success: function(result){
             window.arrayHistorialWeb = result;
+            añadirFilasHistorial(result);
         },
         error: function(result){
         }
     });
-    añadirFilasHistorial();
 }
 function creacionFilas (){
     //TODO array de historial
