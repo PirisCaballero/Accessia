@@ -27,7 +27,7 @@
                         <br>
                         <span class="tituloU">_______________</span>
                     </div>
-                    <div class="divTabla" id="tablaa">
+                    <div class="divTabla">
                         <table class="tabla" id="tablaHistorial">
                             <thead>
                                 <tr>
@@ -51,22 +51,6 @@
                         <canvas id="myChart" width="80%" height="20%"></canvas>
                         <script>
                             getTopPaginasVistas();
-                            var doc = new jsPDF();          
-                            var elementHandler = {
-                            '#tablaa': function (element, renderer) {
-                                return true;
-                            }
-                            };
-                            var source = window.document.getElementsByTagName("body")[0];
-                            doc.fromHTML(
-                                source,
-                                15,
-                                15,
-                                {
-                                'width': 180,'elementHandlers': elementHandler
-                                });
-
-                            doc.output("dataurlnewwindow");
                         </script>
                     </div>
                 </div>
