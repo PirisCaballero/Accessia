@@ -4,7 +4,6 @@ window.tableMin = 0;
 window.historialMin = 0;
 window.historialMax = 10;
 getIdUsuarioFromCookies();
-getTopPaginasVistas(window.idUsuario);
 historialWeb(window.idUsuario);
 
 function añadirFilasHistorial(arrayHistorial){
@@ -238,9 +237,9 @@ function setGrafico(){
             });
 }
 
-function getTopPaginasVistas(userID){
+function getTopPaginasVistas(){
     $.ajax({
-        url: "http://accessia.click/script.php?action=getTopPaginasVistas&userID="+userID,
+        url: "http://accessia.click/script.php?action=getTopPaginasVistas&userID="+window.idUsuario,
         success: function(result){
             window.topPaginasVistasArray = result;
             setGrafico(result);
