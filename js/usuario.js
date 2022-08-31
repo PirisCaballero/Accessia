@@ -121,6 +121,7 @@ function getHistorialEscritorioPDF2(){
     });
     return lista;
 }
+
 function pintarTablaHistorialEscritorio(){
     var tabla = document.getElementById('tablaDesktopApps');
     var header = tabla.createTHead();
