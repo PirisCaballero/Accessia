@@ -5,6 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="../styles/estilos.css">
 		<link rel="stylesheet" type="text/css" href="../styles/footerStyle.css">
 		<link rel="stylesheet" type="text/css" href="../styles/registroUsuario.css">
+        <link rel="stylesheet" type="text/css" href="../styles/usuario.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="/js/loadFunctions.js"></script>
 		<script src="/js/registro.js"></script>
@@ -22,7 +23,11 @@
 
         <div class="accessia">
                 <h1>¿Que es Accessia?</h1>
-            </div>
+                <br>
+                <p>
+                    Accessia es una solución tecnológica
+                </p>
+        </div>
 
     </body>
 
