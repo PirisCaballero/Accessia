@@ -307,7 +307,7 @@
     $conn = getConnection();
     if($conn){
       $query = "INSERT INTO usuarios (nombreUsuario , apellidosUsuario , correoUsuario ,
-        contrasenia , apodo) VALUES ('$nombre' , '$apellidos' , '$correo' , '$nickname' , '$contrasena')";
+        contrasenia , apodo) VALUES ('$nombre' , '$apellidos' , '$correo' , '$contrasena' , '$nickname')";
       $result = $conn -> query($query);
       if($result == 1){
         echo 'yes';
